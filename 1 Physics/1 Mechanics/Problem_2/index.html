@@ -278,6 +278,8 @@ R = \frac{V_0 / L}{\sqrt{\left(\frac{1}{LC} - \omega^2\right)^2 + \left(\frac{R}
 \frac{d^2 \theta}{dt^2} + 2\gamma \frac{d\theta}{dt} + \omega_0^2 \sin\theta = f \cos(\omega t),
 \]</div>
 <p>where <span class="arithmatex">\(\gamma = b/(2m l)\)</span>, <span class="arithmatex">\(\omega_0 = \sqrt{g/l}\)</span>, and <span class="arithmatex">\(f = F_0/(m l)\)</span>, provides a foundation for understanding oscillatory systems under damping and external forcing. In the small-angle regime (<span class="arithmatex">\(\sin\theta \approx \theta\)</span>), the solution:</p>
+<h2 id="website-with-pendulum-simulations">Website with pendulum simulations</h2>
+<p><a href="../pendulum.html">Pendulum Simulator</a></p>
 <div class="arithmatex">\[
 \theta(t) = e^{-\gamma t} (A \cos(\omega_d t) + B \sin(\omega_d t)) + R \cos(\omega t - \phi),
 \]</div>
@@ -463,8 +465,6 @@ def bifurcation_diagram(r_min=2.5, r_max=4.0, num_r=10000, num_iter=1000, num_la
 # Run the bifurcation diagram function
 bifurcation_diagram()
 </code></pre>
-<h2 id="website-with-pendulum-simulations">Website with pendulum simulations</h2>
-<p><a href="../pendulum.html">Pendulum Simulator</a></p>
 <h2 id="colab">Colab</h2>
 <p><a href="https://colab.research.google.com/drive/1g4xaVK18GBao3cgol9j-AK7Odhc4l3yK#scrollTo=khxGamTXf-kp">Colab</a></p>
 </div>
