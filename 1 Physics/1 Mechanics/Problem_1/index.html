@@ -326,32 +326,6 @@ These require numerical methods for solutions, reducing range and altering traje
 <p>This model applies to sports, military, and space exploration, but requires adaptations for real-world dynamics. Adjustments for uneven terrain, air resistance, and varying <span class="arithmatex">\(g\)</span> enhance predictive accuracy. Computational simulations and visualizations clarify parametric effects and practical implications.</p>
 <p>These efforts underscore the versatility of projectile motion, providing a robust platform for theoretical and practical applications.</p>
 <h1 id="codes-and-plots">Codes and Plots</h1>
-<h2 id="range-vs-angle-of-projection-fixed-initial-velocity">Range vs. Angle of Projection (Fixed Initial Velocity)</h2>
-<p><img alt="alt text" src="../image-6.png"/></p>
-<pre><code class="language-python">import numpy as np
-import matplotlib.pyplot as plt
-
-# Constants
-v0 = 20.0  # Initial velocity (m/s)
-g = 9.81   # Gravitational acceleration (m/s^2)
-
-# Angle array (0 to 90 degrees, in radians)
-theta_deg = np.linspace(0, 90, 91)  # Degrees
-theta = np.radians(theta_deg)       # Radians
-
-# Range calculation: R = (v0^2 * sin(2*theta)) / g
-R = (v0**2 * np.sin(2 * theta)) / g
-
-# Plotting
-plt.figure(figsize=(8, 6))
-plt.plot(theta_deg, R, label=f'$v_0 = {v0} \, \mathrm{{m/s}}$', color='blue')
-plt.xlabel('Angle of Projection ($\\theta$, degrees)')
-plt.ylabel('Range ($R$, meters)')
-plt.title('Range vs. Angle of Projection ($h = 0$)')
-plt.grid(True)
-plt.legend()
-plt.show()
-</code></pre>
 <h2 id="range-vs-angle-for-varying-initial-velocities">Range vs. Angle for Varying Initial Velocities</h2>
 <p><img alt="alt text" src="../image-7.png"/></p>
 <pre><code class="language-python">import numpy as np
