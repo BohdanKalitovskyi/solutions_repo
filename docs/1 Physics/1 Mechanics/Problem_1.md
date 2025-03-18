@@ -178,36 +178,6 @@ These efforts underscore the versatility of projectile motion, providing a robus
 
 # Codes and Plots
 
-## Range vs. Angle of Projection (Fixed Initial Velocity)
-
-![alt text](image-6.png)
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-
-# Constants
-v0 = 20.0  # Initial velocity (m/s)
-g = 9.81   # Gravitational acceleration (m/s^2)
-
-# Angle array (0 to 90 degrees, in radians)
-theta_deg = np.linspace(0, 90, 91)  # Degrees
-theta = np.radians(theta_deg)       # Radians
-
-# Range calculation: R = (v0^2 * sin(2*theta)) / g
-R = (v0**2 * np.sin(2 * theta)) / g
-
-# Plotting
-plt.figure(figsize=(8, 6))
-plt.plot(theta_deg, R, label=f'$v_0 = {v0} \, \mathrm{{m/s}}$', color='blue')
-plt.xlabel('Angle of Projection ($\\theta$, degrees)')
-plt.ylabel('Range ($R$, meters)')
-plt.title('Range vs. Angle of Projection ($h = 0$)')
-plt.grid(True)
-plt.legend()
-plt.show()
-```
-
 ## Range vs. Angle for Varying Initial Velocities
 
 ![alt text](image-7.png)
