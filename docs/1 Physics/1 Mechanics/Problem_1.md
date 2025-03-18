@@ -138,6 +138,7 @@ This section explores the relevance of projectile motion in real-world contexts,
 
 ## 1. Real-World Scenarios
 Projectile motion is crucial in:
+
 - **Sports**: Basketball shots, soccer kicks, and golf drives follow parabolic paths influenced by $\theta$ and $v_0$.
 
 - **Military**: Artillery shells' trajectories depend on $v_0$ and $\theta$, with terrain and wind affecting predictions.
@@ -146,9 +147,11 @@ Projectile motion is crucial in:
 
 ## 2. Modifications for Uneven Terrain
 For uneven terrain, adjust the final height $y_f$:
+
 $$
 y_f = -\frac{1}{2} g t_f^2 + v_0 \sin\theta \, t_f + h.
 $$
+
 Solve for $t_f$:
 $$
 t_f = \frac{v_0 \sin\theta \pm \sqrt{(v_0 \sin\theta)^2 - 2 g (h - y_f)}}{g}.
