@@ -172,6 +172,9 @@ $$
 
 where $\gamma = b/(2m l)$, $\omega_0 = \sqrt{g/l}$, and $f = F_0/(m l)$, provides a foundation for understanding oscillatory systems under damping and external forcing. In the small-angle regime ($\sin\theta \approx \theta$), the solution:
 
+## Website with pendulum simulations
+[Pendulum Simulator](pendulum.html)
+
 $$
 \theta(t) = e^{-\gamma t} (A \cos(\omega_d t) + B \sin(\omega_d t)) + R \cos(\omega t - \phi),
 $$
@@ -377,11 +380,6 @@ def bifurcation_diagram(r_min=2.5, r_max=4.0, num_r=10000, num_iter=1000, num_la
 # Run the bifurcation diagram function
 bifurcation_diagram()
 ```
-
-
-
-## Website with pendulum simulations
-[Pendulum Simulator](pendulum.html)
 
 
 ## Colab
