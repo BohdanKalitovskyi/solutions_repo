@@ -139,7 +139,9 @@ This section explores the relevance of projectile motion in real-world contexts,
 ## 1. Real-World Scenarios
 Projectile motion is crucial in:
 - **Sports**: Basketball shots, soccer kicks, and golf drives follow parabolic paths influenced by $\theta$ and $v_0$.
+
 - **Military**: Artillery shells' trajectories depend on $v_0$ and $\theta$, with terrain and wind affecting predictions.
+
 - **Space Exploration**: Initial rocket phases resemble projectile motion, with $g$ varying with altitude.
 
 ## 2. Modifications for Uneven Terrain
