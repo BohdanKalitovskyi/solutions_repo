@@ -164,7 +164,7 @@ $$
 ## 3. Incorporating Air Resistance
 Air resistance, modeled as $F_d = -k v$ or $F_d = -c v^2$, modifies the equations of motion:
 $$
-\frac{d^2 x}{dt^2} = -\frac{c}{m} |\vec{v}| \dot{x}, \quad \frac{d^2 y}{dt^2} = -g - \frac{c}{m} |\vec{v}| \dot{y}.
+\frac{d^2 x}{dt^2} = -\frac{c}{m}  \dot{x}, \quad \frac{d^2 y}{dt^2} = -g - \frac{c}{m}  \dot{y}.
 $$
 These require numerical methods for solutions, reducing range and altering trajectory shape.
 
