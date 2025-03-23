@@ -172,8 +172,7 @@ $$
 
 where $\gamma = b/(2m l)$, $\omega_0 = \sqrt{g/l}$, and $f = F_0/(m l)$, provides a foundation for understanding oscillatory systems under damping and external forcing. In the small-angle regime ($\sin\theta \approx \theta$), the solution:
 
-## Website with pendulum simulations
-[Pendulum Simulator](pendulum.html)
+
 
 $$
 \theta(t) = e^{-\gamma t} (A \cos(\omega_d t) + B \sin(\omega_d t)) + R \cos(\omega t - \phi),
@@ -186,6 +185,9 @@ Analysis of system dynamics highlights the roles of damping $\gamma$, driving am
 Practically, the model informs energy harvesting by optimizing $\omega_0$ for resonance, enhances suspension bridge stability by tuning $\gamma$ to mitigate $Q = \omega_0/(2\gamma)$, and guides oscillating circuits via analogies to RLC dynamics, where $R = \frac{V_0 / L}{\sqrt{\left(\frac{1}{LC} - \omega^2\right)^2 + \left(\frac{R}{L} \omega\right)^2}}$. Nonlinear insights further address large-amplitude effects and chaotic potential, from preventing bridge collapse to enabling advanced signal processing.
 
 In sum, the forced damped pendulum exemplifies how fundamental physics principles—linear resonance, nonlinear transitions, and parameter interplay—translate into real-world solutions, advancing both theoretical understanding and technological innovation.
+
+## Website with pendulum simulations
+[Pendulum Simulator](pendulum.html)
 
 ## Basic Simulation and Motion Plot
 
