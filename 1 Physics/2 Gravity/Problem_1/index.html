@@ -172,7 +172,238 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
-<p>.</p>
+<h1 id="derivation-of-the-relationship-between-orbital-period-and-orbital-radius">Derivation of the Relationship Between Orbital Period and Orbital Radius</h1>
+<p>The following notes derive the relationship between the square of the orbital period (<span class="arithmatex">\(T^2\)</span>) and the cube of the orbital radius (<span class="arithmatex">\(r^3\)</span>) for an object in a circular orbit, culminating in a form consistent with Kepler's Third Law. This derivation integrates Newton’s law of universal gravitation with the dynamics of circular motion, providing a foundational result in celestial mechanics.</p>
+<h2 id="1-newtons-law-of-gravitation">1. Newton’s Law of Gravitation</h2>
+<p>Newton’s law of gravitation describes the attractive force between two masses. For a satellite of mass <span class="arithmatex">\(m\)</span> orbiting a central body of mass <span class="arithmatex">\(M\)</span> (where <span class="arithmatex">\(M \gg m\)</span>), the gravitational force <span class="arithmatex">\(F_g\)</span> is given by:</p>
+<div class="arithmatex">\[ F_g = \frac{G M m}{r^2} \]</div>
+<p>where:
+- <span class="arithmatex">\(G\)</span> is the gravitational constant (<span class="arithmatex">\(G \approx 6.67430 \times 10^{-11} \, \text{m}^3 \text{kg}^{-1} \text{s}^{-2}\)</span>),
+- <span class="arithmatex">\(M\)</span> is the mass of the central body,
+- <span class="arithmatex">\(m\)</span> is the mass of the orbiting body,
+- <span class="arithmatex">\(r\)</span> is the orbital radius (distance between the centers of the two masses).</p>
+<p>This force acts as the centripetal force required to maintain the satellite in a circular orbit.</p>
+<h2 id="2-centripetal-force-for-circular-motion">2. Centripetal Force for Circular Motion</h2>
+<p>For an object in uniform circular motion, the centripetal force <span class="arithmatex">\(F_c\)</span> is necessary to keep it moving along a circular path. The expression for centripetal force is:</p>
+<div class="arithmatex">\[ F_c = \frac{m v^2}{r} \]</div>
+<p>where:
+- <span class="arithmatex">\(v\)</span> is the orbital velocity of the satellite,
+- <span class="arithmatex">\(m\)</span> is the mass of the satellite,
+- <span class="arithmatex">\(r\)</span> is the radius of the circular orbit.</p>
+<p>The orbital velocity <span class="arithmatex">\(v\)</span> can be related to the orbital period <span class="arithmatex">\(T\)</span>, the time for one complete revolution. The circumference of the orbit is <span class="arithmatex">\(2\pi r\)</span>, so:</p>
+<div class="arithmatex">\[ v = \frac{2\pi r}{T} \]</div>
+<p>Squaring this velocity:</p>
+<div class="arithmatex">\[ v^2 = \left( \frac{2\pi r}{T} \right)^2 = \frac{4\pi^2 r^2}{T^2} \]</div>
+<p>Substituting <span class="arithmatex">\(v^2\)</span> into the centripetal force equation:</p>
+<div class="arithmatex">\[ F_c = \frac{m}{r} \cdot \frac{4\pi^2 r^2}{T^2} = \frac{4\pi^2 m r}{T^2} \]</div>
+<h2 id="3-equating-gravitational-and-centripetal-forces">3. Equating Gravitational and Centripetal Forces</h2>
+<p>In a stable circular orbit, the gravitational force provides the necessary centripetal force. Thus, we set <span class="arithmatex">\(F_g = F_c\)</span>:</p>
+<div class="arithmatex">\[ \frac{G M m}{r^2} = \frac{4\pi^2 m r}{T^2} \]</div>
+<p>The mass of the satellite <span class="arithmatex">\(m\)</span> appears on both sides and, assuming <span class="arithmatex">\(m \neq 0\)</span>, can be canceled:</p>
+<div class="arithmatex">\[ \frac{G M}{r^2} = \frac{4\pi^2 r}{T^2} \]</div>
+<h2 id="4-solving-for-the-orbital-period-radius-relationship">4. Solving for the Orbital Period-Radius Relationship</h2>
+<p>To isolate the relationship between <span class="arithmatex">\(T\)</span> and <span class="arithmatex">\(r\)</span>, rearrange the equation. Multiply both sides by <span class="arithmatex">\(T^2\)</span>:</p>
+<div class="arithmatex">\[ G M T^2 = 4\pi^2 r^3 \]</div>
+<p>Now, divide through by <span class="arithmatex">\(G M\)</span>:</p>
+<div class="arithmatex">\[ T^2 = \frac{4\pi^2}{G M} r^3 \]</div>
+<p>This equation reveals that the square of the orbital period <span class="arithmatex">\(T^2\)</span> is directly proportional to the cube of the orbital radius <span class="arithmatex">\(r^3\)</span>. The constant of proportionality, <span class="arithmatex">\(\frac{4\pi^2}{G M}\)</span>, depends only on the mass of the central body <span class="arithmatex">\(M\)</span> and universal constants.</p>
+<h2 id="5-consistency-with-keplers-third-law">5. Consistency with Kepler’s Third Law</h2>
+<p>Kepler’s Third Law, originally empirical, states that for planets orbiting the Sun, the ratio <span class="arithmatex">\(T^2 / r^3\)</span> is constant. In Newtonian terms, we rewrite:</p>
+<div class="arithmatex">\[ T^2 = k r^3 \]</div>
+<p>where <span class="arithmatex">\(k = \frac{4\pi^2}{G M}\)</span> is constant for all bodies orbiting the same central mass <span class="arithmatex">\(M\)</span>. This confirms that our derivation aligns with Kepler’s Third Law for circular orbits. For a given system (e.g., the Solar System), <span class="arithmatex">\(M\)</span> is the mass of the Sun, and <span class="arithmatex">\(k\)</span> is identical for all planets assuming circular orbits.</p>
+<p>To express this in a more familiar form, take the ratio for two orbiting bodies (e.g., planets 1 and 2):</p>
+<div class="arithmatex">\[ \frac{T_1^2}{r_1^3} = \frac{T_2^2}{r_2^3} \]</div>
+<p>This dimensionless form emphasizes the universality of the relationship across a single gravitational system.</p>
+<h1 id="implications-of-the-orbital-period-radius-relationship-in-astronomy">Implications of the Orbital Period-Radius Relationship in Astronomy</h1>
+<p>The relationship <span class="arithmatex">\(T^2 = \frac{4\pi^2}{G M} r^3\)</span>, derived from Newtonian mechanics, underpins critical astronomical applications. This section explores how it enables the determination of central body masses, facilitates distance measurements between celestial bodies, and enhances our understanding of gravitational interactions in planetary systems and satellite orbits.</p>
+<h2 id="1-calculating-the-mass-of-a-central-body">1. Calculating the Mass of a Central Body</h2>
+<p>The derived relationship allows astronomers to infer the mass of a central body <span class="arithmatex">\(M\)</span> (e.g., a star or planet) when the orbital period <span class="arithmatex">\(T\)</span> and radius <span class="arithmatex">\(r\)</span> of a satellite or orbiting body are measurable. Rearranging the equation for <span class="arithmatex">\(M\)</span>:</p>
+<div class="arithmatex">\[ M = \frac{4\pi^2 r^3}{G T^2} \]</div>
+<p>Here, <span class="arithmatex">\(G\)</span> is the gravitational constant (<span class="arithmatex">\(G \approx 6.67430 \times 10^{-11} \, \text{m}^3 \text{kg}^{-1} \text{s}^{-2}\)</span>), <span class="arithmatex">\(r\)</span> is the orbital radius, and <span class="arithmatex">\(T\)</span> is the orbital period. For example, consider Earth’s Moon: with <span class="arithmatex">\(T \approx 27.32 \, \text{days}\)</span> (converted to seconds, <span class="arithmatex">\(T \approx 2.36 \times 10^6 \, \text{s}\)</span>) and <span class="arithmatex">\(r \approx 3.84 \times 10^8 \, \text{m}\)</span>, astronomers can compute Earth’s mass <span class="arithmatex">\(M\)</span>.</p>
+<p>This method is widely applied beyond the Solar System. For a binary star system, if one star’s orbit has a measured period <span class="arithmatex">\(T_1\)</span> and semi-major axis <span class="arithmatex">\(r_1\)</span> (approximated as <span class="arithmatex">\(r\)</span> for circular orbits), the total system mass can be estimated, assuming the companion’s contribution is accounted for via the center-of-mass relation.</p>
+<h2 id="2-determining-distances-between-celestial-bodies">2. Determining Distances Between Celestial Bodies</h2>
+<p>The <span class="arithmatex">\(T^2 \propto r^3\)</span> relationship also aids in measuring distances between celestial bodies, such as planets or moons, when paired with observational data. If <span class="arithmatex">\(M\)</span> is known (e.g., the Sun’s mass, <span class="arithmatex">\(M_\odot \approx 1.989 \times 10^{30} \, \text{kg}\)</span>), and <span class="arithmatex">\(T\)</span> is observed (e.g., via transit timing or Doppler shifts), the orbital radius <span class="arithmatex">\(r\)</span> can be solved:</p>
+<div class="arithmatex">\[ r = \left( \frac{G M T^2}{4\pi^2} \right)^{1/3} \]</div>
+<p>For instance, knowing Earth’s orbital period around the Sun (<span class="arithmatex">\(T \approx 365.25 \, \text{days} \approx 3.156 \times 10^7 \, \text{s}\)</span>), astronomers calculate its mean distance <span class="arithmatex">\(r \approx 1.496 \times 10^{11} \, \text{m}\)</span> (1 AU). This technique extends to exoplanets: if an exoplanet’s period is detected via light curve dips, its distance from its host star can be inferred, assuming the star’s mass is estimated from stellar models.</p>
+<p>For moons, the method refines distances from their planets. The Moon’s <span class="arithmatex">\(r\)</span> was historically constrained using its period and Earth’s mass, validated by modern laser ranging.</p>
+<h2 id="3-significance-in-understanding-gravitational-interactions">3. Significance in Understanding Gravitational Interactions</h2>
+<p>The relationship illuminates gravitational dynamics across scales. In planetary systems, it governs stability: perturbations in <span class="arithmatex">\(r\)</span> or <span class="arithmatex">\(T\)</span> signal additional masses (e.g., undiscovered planets) via deviations from the expected <span class="arithmatex">\(T^2/r^3\)</span> ratio. For the Solar System, Kepler’s Third Law holds approximately for planets, with slight elliptical corrections:</p>
+<div class="arithmatex">\[ \frac{T^2}{r^3} \approx \text{constant} = \frac{4\pi^2}{G M_\odot} \]</div>
+<p>For satellite orbits, the equation informs design. Geostationary satellites, with <span class="arithmatex">\(T = 24 \, \text{hours} \approx 86,400 \, \text{s}\)</span>, orbit at <span class="arithmatex">\(r \approx 42,164 \, \text{km}\)</span> from Earth’s center, derived from:</p>
+<div class="arithmatex">\[ r = \left( \frac{G M_\oplus T^2}{4\pi^2} \right)^{1/3} \]</div>
+<p>where <span class="arithmatex">\(M_\oplus \approx 5.972 \times 10^{24} \, \text{kg}\)</span>. This precision ensures communication satellites maintain fixed positions relative to Earth.</p>
+<p>Moreover, the law’s universality—applicable to moons, planets, and artificial satellites—underscores gravity’s consistent role. In multi-body systems, deviations from the ideal <span class="arithmatex">\(T^2 \propto r^3\)</span> form reveal tidal effects or companion influences, as seen in Jupiter’s Galilean moons.</p>
+<h1 id="analysis-of-real-world-examples-orbital-period-and-radius">Analysis of Real-World Examples: Orbital Period and Radius</h1>
+<p>Kepler’s Third Law, expressed as <span class="arithmatex">\(T^2 = \frac{4\pi^2}{G M} r^3\)</span> for circular orbits, implies that the ratio <span class="arithmatex">\(T^2/r^3\)</span> is constant for objects orbiting the same central body. This section collects orbital data for the Moon around Earth and for Earth and Mars around the Sun, then compares these to demonstrate the law’s consistency across systems.</p>
+<h2 id="1-data-collection-moons-orbit-around-earth">1. Data Collection: Moon’s Orbit Around Earth</h2>
+<p>The Moon orbits Earth with the following approximate parameters:<br/>
+- <strong>Orbital Period (<span class="arithmatex">\(T\)</span>)</strong>: The sidereal period is <span class="arithmatex">\(27.322\)</span> days, or <span class="arithmatex">\(T_m = 27.322 \times 86,400 = 2.36 \times 10^6 \, \text{s}\)</span> (converting days to seconds).<br/>
+- <strong>Orbital Radius (<span class="arithmatex">\(r\)</span>)</strong>: The average distance is <span class="arithmatex">\(r_m = 3.844 \times 10^8 \, \text{m}\)</span>, based on lunar ranging data.  </p>
+<p>Calculate <span class="arithmatex">\(T_m^2\)</span> and <span class="arithmatex">\(r_m^3\)</span>:<br/>
+- <span class="arithmatex">\(T_m^2 = (2.36 \times 10^6)^2 = 5.57 \times 10^{12} \, \text{s}^2\)</span>,<br/>
+- <span class="arithmatex">\(r_m^3 = (3.844 \times 10^8)^3 = 5.67 \times 10^{25} \, \text{m}^3\)</span>.  </p>
+<p>Thus, the ratio:<br/>
+$$ \frac{T_m^2}{r_m^3} = \frac{5.57 \times 10^{12}}{5.67 \times 10^{25}} \approx 9.82 \times 10^{-14} \, \text{s}^2 \text{m}^{-3}. $$</p>
+<p>This depends on Earth’s mass <span class="arithmatex">\(M_\oplus\)</span> via $ \frac{4\pi^2}{G M_\oplus} $, where <span class="arithmatex">\(G = 6.67430 \times 10^{-11} \, \text{m}^3 \text{kg}^{-1} \text{s}^{-2}\)</span> and <span class="arithmatex">\(M_\oplus \approx 5.972 \times 10^{24} \, \text{kg}\)</span>.</p>
+<h2 id="2-data-collection-planetary-orbits-around-the-sun">2. Data Collection: Planetary Orbits Around the Sun</h2>
+<h3 id="earths-orbit">Earth’s Orbit</h3>
+<ul>
+<li><strong>Orbital Period (<span class="arithmatex">\(T\)</span>)</strong>: Earth’s sidereal year is <span class="arithmatex">\(365.256\)</span> days, or <span class="arithmatex">\(T_e = 365.256 \times 86,400 = 3.156 \times 10^7 \, \text{s}\)</span>.  </li>
+<li><strong>Orbital Radius (<span class="arithmatex">\(r\)</span>)</strong>: The average distance (1 AU) is <span class="arithmatex">\(r_e = 1.496 \times 10^{11} \, \text{m}\)</span>.  </li>
+</ul>
+<p>Calculate:<br/>
+- <span class="arithmatex">\(T_e^2 = (3.156 \times 10^7)^2 = 9.96 \times 10^{14} \, \text{s}^2\)</span>,<br/>
+- <span class="arithmatex">\(r_e^3 = (1.496 \times 10^{11})^3 = 3.34 \times 10^{33} \, \text{m}^3\)</span>.  </p>
+<p>Ratio:<br/>
+$$ \frac{T_e^2}{r_e^3} = \frac{9.96 \times 10^{14}}{3.34 \times 10^{33}} \approx 2.98 \times 10^{-19} \, \text{s}^2 \text{m}^{-3}. $$</p>
+<h3 id="mars-orbit">Mars’ Orbit</h3>
+<ul>
+<li><strong>Orbital Period (<span class="arithmatex">\(T\)</span>)</strong>: Mars’ sidereal year is <span class="arithmatex">\(686.98\)</span> days, or <span class="arithmatex">\(T_{ma} = 686.98 \times 86,400 = 5.936 \times 10^7 \, \text{s}\)</span>.  </li>
+<li><strong>Orbital Radius (<span class="arithmatex">\(r\)</span>)</strong>: The average distance is <span class="arithmatex">\(r_{ma} = 2.279 \times 10^{11} \, \text{m}\)</span> (1.524 AU).  </li>
+</ul>
+<p>Calculate:<br/>
+- <span class="arithmatex">\(T_{ma}^2 = (5.936 \times 10^7)^2 = 3.52 \times 10^{15} \, \text{s}^2\)</span>,<br/>
+- <span class="arithmatex">\(r_{ma}^3 = (2.279 \times 10^{11})^3 = 1.18 \times 10^{34} \, \text{m}^3\)</span>.  </p>
+<p>Ratio:<br/>
+$$ \frac{T_{ma}^2}{r_{ma}^3} = \frac{3.52 \times 10^{15}}{1.18 \times 10^{34}} \approx 2.98 \times 10^{-19} \, \text{s}^2 \text{m}^{-3}. $$</p>
+<h2 id="3-comparison-and-verification">3. Comparison and Verification</h2>
+<h3 id="moon-vs-earthmars">Moon vs. Earth/Mars</h3>
+<p>The <span class="arithmatex">\(T^2/r^3\)</span> ratio for the Moon (<span class="arithmatex">\(9.82 \times 10^{-14} \, \text{s}^2 \text{m}^{-3}\)</span>) differs from Earth and Mars (<span class="arithmatex">\(2.98 \times 10^{-19} \, \text{s}^2 \text{m}^{-3}\)</span>) because the central masses differ: Earth (<span class="arithmatex">\(M_\oplus\)</span>) for the Moon, and the Sun (<span class="arithmatex">\(M_\odot \approx 1.989 \times 10^{30} \, \text{kg}\)</span>) for the planets. Compute the theoretical constants:<br/>
+- For the Moon:<br/>
+  $$ \frac{4\pi^2}{G M_\oplus} = \frac{4\pi^2}{6.67430 \times 10^{-11} \times 5.972 \times 10^{24}} \approx 9.90 \times 10^{-14} \, \text{s}^2 \text{m}^{-3}, $$<br/>
+  which matches <span class="arithmatex">\(9.82 \times 10^{-14}\)</span> within observational error.<br/>
+- For Earth and Mars:<br/>
+  $$ \frac{4\pi^2}{G M_\odot} = \frac{4\pi^2}{6.67430 \times 10^{-11} \times 1.989 \times 10^{30}} \approx 2.97 \times 10^{-19} \, \text{s}^2 \text{m}^{-3}, $$<br/>
+  closely aligning with <span class="arithmatex">\(2.98 \times 10^{-19}\)</span>.</p>
+<h3 id="earth-vs-mars">Earth vs. Mars</h3>
+<p>For Earth and Mars, orbiting the same body (Sun), the ratios are nearly identical (<span class="arithmatex">\(2.98 \times 10^{-19}\)</span>), confirming Kepler’s Third Law:<br/>
+$$ \frac{T_e^2}{r_e^3} = \frac{T_{ma}^2}{r_{ma}^3}. $$</p>
+<p>This holds despite Mars’ higher eccentricity (0.093 vs. Earth’s 0.017), as <span class="arithmatex">\(r\)</span> approximates the semi-major axis.</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>The relationship <span class="arithmatex">\(T^2 = \frac{4\pi^2}{G M} r^3\)</span>, derived from gravitational and circular motion dynamics, is a cornerstone of celestial mechanics. It links a central mass <span class="arithmatex">\(M\)</span>, orbital radius <span class="arithmatex">\(r\)</span>, and period <span class="arithmatex">\(T\)</span>, enabling calculations of orbital periods, radii, and central body masses. Its applications range from the Solar System to exoplanetary studies, where it aids in characterizing distant worlds.</p>
+<p>Observational data confirm its consistency: the <span class="arithmatex">\(T^2/r^3\)</span> ratio reflects the central mass, with the Moon’s ratio tied to Earth’s mass (<span class="arithmatex">\(M_\oplus\)</span>) and Earth and Mars sharing a ratio linked to the Sun’s mass (<span class="arithmatex">\(M_\odot\)</span>). This universality validates Kepler’s Third Law for circular orbits, with theoretical values aligning closely with empirical results.</p>
+<p>Beyond practical uses, this relationship underscores Newtonian gravity’s predictive power, bridging local and cosmic scales. It also serves as a foundation for exploring elliptical orbits and broader celestial dynamics.</p>
+<h1 id="visualizations">Visualizations</h1>
+<h2 id="website-with-orbit-simulation">Website with orbit simulation</h2>
+<p><a href="../orbit_simulation.html">Orbit Simulation</a></p>
+<h2 id="kepler-third-law-log-scale">Kepler Third Law (log scale)</h2>
+<p><img alt="alt text" src="../image.png"/></p>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+G = 6.67430e-11  
+M = 1.989e30  
+
+# Orbital radii in meters (planets in the Solar System, in AU converted to meters)
+au_to_m = 1.496e11  
+planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+radii_au = np.array([0.39, 0.72, 1.0, 1.52, 5.2, 9.58, 19.2, 30.1])  
+radii = radii_au * au_to_m  # Convert to meters
+periods = np.sqrt(4 * np.pi**2 * radii**3 / (G * M))  # Kepler's Third Law
+
+# Compute log values to make them more readable
+log_r3 = np.log10(radii**3)
+log_T2 = np.log10(periods**2)
+
+# Plot T^2 vs. r^3 using log-log scale
+plt.figure(figsize=(8, 6))
+plt.scatter(log_r3, log_T2, color='b', label=r'$T^2 \propto r^3$')
+
+# Add planet labels with adjusted positions to avoid overlap
+for i, planet in enumerate(planets):
+    plt.text(log_r3[i], log_T2[i] + 0.1, planet, fontsize=10, ha='center', va='bottom')
+
+plt.xlabel(r"$\log_{10}(r^3) \, (m^3)$")
+plt.ylabel(r"$\log_{10}(T^2) \, (s^2)$")
+plt.title("Kepler's Third Law: $T^2$ vs. $r^3$ (Log Scale)")
+plt.legend()
+plt.grid(True, which="both", linestyle="--", linewidth=0.5)
+plt.show()
+</code></pre>
+<h2 id="planetary-orbit-animation">Planetary Orbit Animation</h2>
+<p><img alt="alt text" src="../orbit_animation.gif"/></p>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+from IPython.display import HTML
+
+# Constants
+G = 6.67430e-11  # Gravitational constant
+M = 1.989e30  # Mass of the Sun (kg)
+AU = 1.496e11  # Astronomical unit (m)
+
+# Define a planet's orbit
+r = 1.0 * AU  # 1 AU
+T = np.sqrt(4 * np.pi**2 * r**3 / (G * M))  # Orbital period
+
+# Time values
+num_frames = 200  # Number of frames for smooth animation
+t = np.linspace(0, T, num_frames)  
+theta = 2 * np.pi * t / T  
+
+# Orbital positions
+x = r * np.cos(theta)
+y = r * np.sin(theta)
+
+# Create figure
+fig, ax = plt.subplots(figsize=(6,6))
+ax.set_xlim(-1.2 * AU, 1.2 * AU)
+ax.set_ylim(-1.2 * AU, 1.2 * AU)
+ax.set_xlabel("X Position (m)")
+ax.set_ylabel("Y Position (m)")
+ax.set_title("Planetary Orbit Animation")
+ax.grid()
+
+# Plot Sun
+ax.plot(0, 0, 'yo', markersize=12, label="Sun")
+
+# Planet marker
+planet, = ax.plot([], [], 'bo', markersize=8, label="Planet")
+
+# Animation function
+def update(frame):
+    planet.set_data([x[frame]], [y[frame]])  # Ensure data is passed as a sequence
+    return planet,
+
+# Create animation
+ani = animation.FuncAnimation(fig, update, frames=num_frames, interval=50, blit=True)
+
+# Save as GIF
+ani.save("/content/orbit_animation.gif", writer="pillow", fps=20)
+
+# Display in Colab
+HTML(ani.to_jshtml())
+</code></pre>
+<h2 id="gravitational-potential-heatmap">Gravitational Potential Heatmap</h2>
+<p><img alt="alt text" src="../image-1.png"/></p>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# Define grid
+x = np.linspace(-2e11, 2e11, 100)
+y = np.linspace(-2e11, 2e11, 100)
+X, Y = np.meshgrid(x, y)
+
+# Compute gravitational potential (V = -GM/r)
+G = 6.67430e-11  
+M = 1.989e30  
+R = np.sqrt(X**2 + Y**2)
+V = -G * M / (R + 1e7)  # Avoid division by zero
+
+# Plot heatmap
+plt.figure(figsize=(6, 6))
+plt.contourf(X, Y, V, levels=50, cmap='inferno')
+plt.colorbar(label="Gravitational Potential (J/kg)")
+plt.scatter(0, 0, color='yellow', s=100, label="Sun")
+plt.xlabel("x (m)")
+plt.ylabel("y (m)")
+plt.title("Gravitational Potential Heatmap")
+plt.legend()
+plt.show()
+</code></pre>
+<h1 id="colab">Colab</h1>
+<p><a href="https://colab.research.google.com/drive/1oifWYAJlXKGD2uOZ3QjqINaipHFHGMBd#scrollTo=Ysig05R8hXNw">Colab</a></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
