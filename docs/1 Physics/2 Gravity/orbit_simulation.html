@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orbit Simulation</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #111; /* Dark background for space-like effect */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        canvas {
+            border: 2px solid white; /* Border around canvas */
+        }
+
+        #info {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 18px;
+            color: white;
+        }
+
+        #info p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        #info label {
+            margin-right: 10px;
+        }
+
+        input[type="range"] {
+            width: 200px;
+            margin: 10px 0;
+            background-color: #333;
+            border: 1px solid #555;
+            border-radius: 5px;
+            color: white;
+        }
+
+        input[type="range"]:focus {
+            outline: none;
+            border-color: #fff;
+        }
+
+        #radiusValue, #speedValue {
+            font-weight: bold;
+        }
+
+        /* Text improvements */
+        #info p, #info label {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        #radiusValue, #speedValue {
+            color: #ffcc00; /* Bright color for better readability */
+        }
+
+    </style>
+</head>
+<body>
+    <div id="info">
+        <p>Use the sliders to adjust the orbit radius and speed.</p>
+        <label for="radiusSlider">Radius (AU): </label>
+        <input type="range" id="radiusSlider" min="0.5" max="2" step="0.01" value="1.0">
+        <span id="radiusValue">1.0</span> AU
+        <br><br>
+        <label for="speedSlider">Orbit Speed: </label>
+        <input type="range" id="speedSlider" min="0.001" max="0.05" step="0.001" value="0.01">
+        <span id="speedValue">0.01</span>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Scene setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Sun (yellow sphere)
+        const sunGeometry = new THREE.SphereGeometry(0.1, 32, 32);
+        const sunMaterial = new THREE.MeshBasicMaterial({ color: 0xffff00 });
+        const sun = new THREE.Mesh(sunGeometry, sunMaterial);
+        scene.add(sun);
+
+        // Planet (light blue sphere for better visibility)
+        const planetGeometry = new THREE.SphereGeometry(0.05, 32, 32);
+        const planetMaterial = new THREE.MeshBasicMaterial({ color: 0x1e90ff }); // Lighter blue
+        const planet = new THREE.Mesh(planetGeometry, planetMaterial);
+        scene.add(planet);
+
+        // Orbit control sliders
+        const radiusSlider = document.getElementById('radiusSlider');
+        const radiusValue = document.getElementById('radiusValue');
+        const speedSlider = document.getElementById('speedSlider');
+        const speedValue = document.getElementById('speedValue');
+
+        let radius = 1.0;  // Initial orbit radius (1 AU)
+        let speed = 0.01;  // Initial orbit speed
+        let angle = 0;     // Initial angle
+
+        // Orbit update function
+        function updateOrbit() {
+            const orbitalSpeed = Math.sqrt(1 / radius); // Adjust orbital speed based on radius
+            angle += orbitalSpeed * speed;
+            planet.position.x = radius * Math.cos(angle);
+            planet.position.z = radius * Math.sin(angle);
+        }
+
+        // Camera position (fixed)
+        camera.position.z = 3;
+        camera.position.y = 1;
+        camera.lookAt(sun.position);
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            updateOrbit();
+            renderer.render(scene, camera);
+        }
+
+        // Slider event listeners
+        radiusSlider.addEventListener('input', function() {
+            radius = parseFloat(radiusSlider.value);
+            radiusValue.textContent = radius.toFixed(2);
+        });
+
+        speedSlider.addEventListener('input', function() {
+            speed = parseFloat(speedSlider.value);
+            speedValue.textContent = speed.toFixed(3);
+        });
+
+        animate();
+    </script>
+</body>
+</html>
+
