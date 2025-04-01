@@ -132,7 +132,12 @@ Calculate $T_m^2$ and $r_m^3$:
 Thus, the ratio:  
 $$ \frac{T_m^2}{r_m^3} = \frac{5.57 \times 10^{12}}{5.67 \times 10^{25}} \approx 9.82 \times 10^{-14} \, \text{s}^2 \text{m}^{-3}. $$
 
-This depends on Earth’s mass $M_\oplus$ via $ \frac{4\pi^2}{G M_\oplus} $, where $G = 6.67430 \times 10^{-11} \, \text{m}^3 \text{kg}^{-1} \text{s}^{-2}$ and $M_\oplus \approx 5.972 \times 10^{24} \, \text{kg}$.
+This depends on Earth’s mass $M_\oplus$ via  
+$$ \frac{4\pi^2}{G M_\oplus}, $$  
+where  
+$$ G = 6.67430 \times 10^{-11} \, \text{m}^3 \text{kg}^{-1} \text{s}^{-2} $$  
+and  
+$$ M_\oplus \approx 5.972 \times 10^{24} \, \text{kg}. $$
 
 ## 2. Data Collection: Planetary Orbits Around the Sun
 
