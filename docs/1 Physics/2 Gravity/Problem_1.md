@@ -139,47 +139,6 @@ $$ G = 6.67430 \times 10^{-11} \, \text{m}^3 \text{kg}^{-1} \text{s}^{-2} $$
 and  
 $$ M_\oplus \approx 5.972 \times 10^{24} \, \text{kg}. $$
 
-## 2. Data Collection: Planetary Orbits Around the Sun
-
-### Earth’s Orbit
-- **Orbital Period ($T$)**: Earth’s sidereal year is $365.256$ days, or $T_e = 365.256 \times 86,400 = 3.156 \times 10^7 \, \text{s}$.  
-- **Orbital Radius ($r$)**: The average distance (1 AU) is $r_e = 1.496 \times 10^{11} \, \text{m}$.  
-
-Calculate:  
-- $T_e^2 = (3.156 \times 10^7)^2 = 9.96 \times 10^{14} \, \text{s}^2$,  
-- $r_e^3 = (1.496 \times 10^{11})^3 = 3.34 \times 10^{33} \, \text{m}^3$.  
-
-Ratio:  
-$$ \frac{T_e^2}{r_e^3} = \frac{9.96 \times 10^{14}}{3.34 \times 10^{33}} \approx 2.98 \times 10^{-19} \, \text{s}^2 \text{m}^{-3}. $$
-
-### Mars’ Orbit
-- **Orbital Period ($T$)**: Mars’ sidereal year is $686.98$ days, or $T_{ma} = 686.98 \times 86,400 = 5.936 \times 10^7 \, \text{s}$.  
-- **Orbital Radius ($r$)**: The average distance is $r_{ma} = 2.279 \times 10^{11} \, \text{m}$ (1.524 AU).  
-
-Calculate:  
-- $T_{ma}^2 = (5.936 \times 10^7)^2 = 3.52 \times 10^{15} \, \text{s}^2$,  
-- $r_{ma}^3 = (2.279 \times 10^{11})^3 = 1.18 \times 10^{34} \, \text{m}^3$.  
-
-Ratio:  
-$$ \frac{T_{ma}^2}{r_{ma}^3} = \frac{3.52 \times 10^{15}}{1.18 \times 10^{34}} \approx 2.98 \times 10^{-19} \, \text{s}^2 \text{m}^{-3}. $$
-
-## 3. Comparison and Verification
-
-### Moon vs. Earth/Mars
-The $T^2/r^3$ ratio for the Moon ($9.82 \times 10^{-14} \, \text{s}^2 \text{m}^{-3}$) differs from Earth and Mars ($2.98 \times 10^{-19} \, \text{s}^2 \text{m}^{-3}$) because the central masses differ: Earth ($M_\oplus$) for the Moon, and the Sun ($M_\odot \approx 1.989 \times 10^{30} \, \text{kg}$) for the planets. Compute the theoretical constants:  
-- For the Moon:  
-  $$ \frac{4\pi^2}{G M_\oplus} = \frac{4\pi^2}{6.67430 \times 10^{-11} \times 5.972 \times 10^{24}} \approx 9.90 \times 10^{-14} \, \text{s}^2 \text{m}^{-3}, $$  
-  which matches $9.82 \times 10^{-14}$ within observational error.  
-- For Earth and Mars:  
-  $$ \frac{4\pi^2}{G M_\odot} = \frac{4\pi^2}{6.67430 \times 10^{-11} \times 1.989 \times 10^{30}} \approx 2.97 \times 10^{-19} \, \text{s}^2 \text{m}^{-3}, $$  
-  closely aligning with $2.98 \times 10^{-19}$.
-
-### Earth vs. Mars
-For Earth and Mars, orbiting the same body (Sun), the ratios are nearly identical ($2.98 \times 10^{-19}$), confirming Kepler’s Third Law:  
-$$ \frac{T_e^2}{r_e^3} = \frac{T_{ma}^2}{r_{ma}^3}. $$
-
-This holds despite Mars’ higher eccentricity (0.093 vs. Earth’s 0.017), as $r$ approximates the semi-major axis.
-
 # Conclusion
 
 The relationship $T^2 = \frac{4\pi^2}{G M} r^3$, derived from gravitational and circular motion dynamics, is a cornerstone of celestial mechanics. It links a central mass $M$, orbital radius $r$, and period $T$, enabling calculations of orbital periods, radii, and central body masses. Its applications range from the Solar System to exoplanetary studies, where it aids in characterizing distant worlds.
@@ -291,36 +250,6 @@ ani.save("/content/orbit_animation.gif", writer="pillow", fps=20)
 HTML(ani.to_jshtml())
 ```
 
-## Gravitational Potential Heatmap
-
-![alt text](image-1.png)
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-
-# Define grid
-x = np.linspace(-2e11, 2e11, 100)
-y = np.linspace(-2e11, 2e11, 100)
-X, Y = np.meshgrid(x, y)
-
-# Compute gravitational potential (V = -GM/r)
-G = 6.67430e-11  
-M = 1.989e30  
-R = np.sqrt(X**2 + Y**2)
-V = -G * M / (R + 1e7)  # Avoid division by zero
-
-# Plot heatmap
-plt.figure(figsize=(6, 6))
-plt.contourf(X, Y, V, levels=50, cmap='inferno')
-plt.colorbar(label="Gravitational Potential (J/kg)")
-plt.scatter(0, 0, color='yellow', s=100, label="Sun")
-plt.xlabel("x (m)")
-plt.ylabel("y (m)")
-plt.title("Gravitational Potential Heatmap")
-plt.legend()
-plt.show()
-```
 
 # Colab
 
