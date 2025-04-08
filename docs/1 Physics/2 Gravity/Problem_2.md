@@ -73,7 +73,7 @@ The velocity $v_3$ reflects the energy needed to overcome both planetary and ste
 $$\frac{1}{2} m v_3^2 \geq \frac{G M m}{R} + \frac{G M_s m}{R_s}.$$
 
 ## Conclusion
-The first, second, and third cosmic velocities—$v_1$, $v_2$, and $v_3$—define the energetic thresholds for orbiting, escaping a planet, and escaping a star system, respectively. Their derivations from gravitational and kinetic principles highlight their universal applicability in space exploration.
+The first, second, and third cosmic velocities — $v_1$, $v_2$, and $v_3$—define the energetic thresholds for orbiting, escaping a planet, and escaping a star system, respectively. Their derivations from gravitational and kinetic principles highlight their universal applicability in space exploration.
 
 # Escape Velocities and Cosmic Velocities: Mathematical Derivations
 
