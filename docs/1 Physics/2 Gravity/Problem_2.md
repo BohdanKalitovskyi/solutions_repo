@@ -193,8 +193,11 @@ This section computes the first ($v_1$), second ($v_2$), and third ($v_3$) cosmi
 
 ## 1. Celestial Body Data
 Key parameters for calculations:
+
 - **Earth**: $M = 5.972 \times 10^{24} \, \text{kg}$, $R = 6.371 \times 10^6 \, \text{m}$, $R_s = 1.496 \times 10^{11} \, \text{m}$.
+
 - **Mars**: $M = 6.417 \times 10^{23} \, \text{kg}$, $R = 3.390 \times 10^6 \, \text{m}$, $R_s = 2.279 \times 10^{11} \, \text{m}$.
+
 - **Jupiter**: $M = 1.899 \times 10^{27} \, \text{kg}$, $R = 6.991 \times 10^7 \, \text{m}$, $R_s = 7.785 \times 10^{11} \, \text{m}$.
 
 Constants: $G = 6.674 \times 10^{-11} \, \text{m}^3 \text{kg}^{-1} \text{s}^{-2}$, $M_s = 1.989 \times 10^{30} \, \text{kg}$.
