@@ -178,29 +178,29 @@
 <h2 id="1-first-cosmic-velocity-orbital-velocity">1. First Cosmic Velocity (Orbital Velocity)</h2>
 <p>The <em>first cosmic velocity</em>, denoted <span class="arithmatex">\(v_1\)</span>, is the minimum speed required for an object to maintain a circular orbit around a celestial body at its surface. It arises from balancing the centripetal force required for circular motion with the gravitational force exerted by the body.</p>
 <p>The gravitational force on an object of mass <span class="arithmatex">\(m\)</span> at the surface of a body with mass <span class="arithmatex">\(M\)</span> and radius <span class="arithmatex">\(R\)</span> is given by Newton's law of gravitation:
-<span class="arithmatex">\(<span class="arithmatex">\(F_g = \frac{G M m}{R^2},\)</span>\)</span>
+$$ F_g = \frac{G M m}{R^2}, $$
 where <span class="arithmatex">\(G\)</span> is the gravitational constant (<span class="arithmatex">\(G \approx 6.674 \times 10^{-11} \, \text{m}^3 \text{kg}^{-1} \text{s}^{-2}\)</span>).</p>
 <p>For circular motion, the centripetal force is provided by gravity, such that:
-<span class="arithmatex">\(<span class="arithmatex">\(F_c = \frac{m v_1^2}{R} = F_g.\)</span>\)</span></p>
+$$ F_c = \frac{m v_1^2}{R} = F_g. $$</p>
 <p>Equating these forces:
-<span class="arithmatex">\(<span class="arithmatex">\(\frac{m v_1^2}{R} = \frac{G M m}{R^2}.\)</span>\)</span></p>
+$$ \frac{m v_1^2}{R} = \frac{G M m}{R^2}. $$</p>
 <p>Canceling <span class="arithmatex">\(m\)</span> (assuming <span class="arithmatex">\(m \neq 0\)</span>) and simplifying:
-<span class="arithmatex">\(<span class="arithmatex">\(v_1^2 = \frac{G M}{R}.\)</span>\)</span></p>
+$$ v_1^2 = \frac{G M}{R}. $$</p>
 <p>Thus, the first cosmic velocity is:
-<span class="arithmatex">\(<span class="arithmatex">\(v_1 = \sqrt{\frac{G M}{R}}.\)</span>\)</span></p>
+$$ v_1 = \sqrt{\frac{G M}{R}}. $$</p>
 <h3 id="physical-meaning">Physical Meaning</h3>
 <p>The velocity <span class="arithmatex">\(v_1\)</span> represents the threshold where an object’s kinetic energy per unit mass, <span class="arithmatex">\(\frac{1}{2} v_1^2\)</span>, equals the gravitational potential energy per unit mass at the surface, adjusted for circular motion. For Earth (<span class="arithmatex">\(M = 5.972 \times 10^{24} \, \text{kg}\)</span>, <span class="arithmatex">\(R = 6.371 \times 10^6 \, \text{m}\)</span>), <span class="arithmatex">\(v_1 \approx 7.91 \, \text{km/s}\)</span>. This speed enables satellites to orbit without escaping or falling back.</p>
 <h2 id="2-second-cosmic-velocity-escape-velocity">2. Second Cosmic Velocity (Escape Velocity)</h2>
 <p>The <em>second cosmic velocity</em>, denoted <span class="arithmatex">\(v_2\)</span>, is the minimum speed required to escape a celestial body’s gravitational influence entirely, assuming no atmospheric drag or external forces. It corresponds to the point where the total mechanical energy (kinetic plus potential) becomes zero at infinity.</p>
 <p>The gravitational potential energy at distance <span class="arithmatex">\(r\)</span> from the center of mass is:
-<span class="arithmatex">\(<span class="arithmatex">\(U = -\frac{G M m}{r}.\)</span>\)</span></p>
+$$ U = -\frac{G M m}{r}. $$</p>
 <p>At the surface (<span class="arithmatex">\(r = R\)</span>), the potential energy is <span class="arithmatex">\(-\frac{G M m}{R}\)</span>. To escape, the kinetic energy at launch must equal the magnitude of this potential energy:
-<span class="arithmatex">\(<span class="arithmatex">\(\frac{1}{2} m v_2^2 = \frac{G M m}{R}.\)</span>\)</span></p>
+$$ \frac{1}{2} m v_2^2 = \frac{G M m}{R}. $$</p>
 <p>Canceling <span class="arithmatex">\(m\)</span> and solving:
-<span class="arithmatex">\(<span class="arithmatex">\(v_2^2 = \frac{2 G M}{R},\)</span>\)</span>
-<span class="arithmatex">\(<span class="arithmatex">\(v_2 = \sqrt{\frac{2 G M}{R}}.\)</span>\)</span></p>
+$$ v_2^2 = \frac{2 G M}{R}, $$
+$$ v_2 = \sqrt{\frac{2 G M}{R}}. $$</p>
 <p>Notably, comparing <span class="arithmatex">\(v_2\)</span> to <span class="arithmatex">\(v_1\)</span>:
-<span class="arithmatex">\(<span class="arithmatex">\(v_2 = \sqrt{2} \cdot v_1,\)</span>\)</span>
+$$ v_2 = \sqrt{2} \cdot v_1, $$
 since <span class="arithmatex">\(\frac{2 G M}{R} = 2 \cdot \frac{G M}{R}\)</span>.</p>
 <h3 id="physical-meaning_1">Physical Meaning</h3>
 <p>The escape velocity <span class="arithmatex">\(v_2\)</span> signifies the condition where an object’s kinetic energy, <span class="arithmatex">\(\frac{1}{2} v_2^2 = \frac{G M}{R}\)</span>, exactly cancels the negative potential energy, allowing it to reach infinity with zero residual speed. For Earth, <span class="arithmatex">\(v_2 \approx 11.19 \, \text{km/s}\)</span>, critical for lunar or interplanetary missions.</p>
@@ -210,27 +210,27 @@ since <span class="arithmatex">\(\frac{2 G M}{R} = 2 \cdot \frac{G M}{R}\)</span
 - Earth escape: <span class="arithmatex">\(v_2 = \sqrt{\frac{2 G M}{R}}\)</span>,
 - Additional velocity to escape the Sun’s gravity from Earth’s orbital radius.</p>
 <p>The Sun’s potential at Earth’s distance (<span class="arithmatex">\(R_s \approx 1.496 \times 10^{11} \, \text{m}\)</span>) is:
-<span class="arithmatex">\(<span class="arithmatex">\(U_s = -\frac{G M_s m}{R_s}.\)</span>\)</span></p>
+$$ U_s = -\frac{G M_s m}{R_s}. $$</p>
 <p>Earth’s orbital velocity around the Sun is:
-<span class="arithmatex">\(<span class="arithmatex">\(v_{\text{orb}} = \sqrt{\frac{G M_s}{R_s}} \approx 29.78 \, \text{km/s}.\)</span>\)</span></p>
+$$ v_{\text{orb}} = \sqrt{\frac{G M_s}{R_s}} \approx 29.78 \, \text{km/s}. $$</p>
 <p>The velocity to escape the Sun from Earth’s orbit is:
-<span class="arithmatex">\(<span class="arithmatex">\(v_{\text{esc,s}} = \sqrt{2} \cdot v_{\text{orb}} \approx 42.1 \, \text{km/s}.\)</span>\)</span></p>
+$$ v_{\text{esc,s}} = \sqrt{2} \cdot v_{\text{orb}} \approx 42.1 \, \text{km/s}. $$</p>
 <p>The third cosmic velocity combines Earth escape and Solar escape, approximated as:
-<span class="arithmatex">\(<span class="arithmatex">\(v_3 \approx \sqrt{v_2^2 + (v_{\text{esc,s}} - v_{\text{orb}})^2}.\)</span>\)</span></p>
+$$ v_3 \approx \sqrt{v_2^2 + (v_{\text{esc,s}} - v_{\text{orb}})^2}. $$</p>
 <p>For Earth, <span class="arithmatex">\(v_3 \approx 16.6 \, \text{km/s}\)</span> from the surface, though exact values depend on trajectory.</p>
 <h3 id="physical-meaning_2">Physical Meaning</h3>
 <p>The velocity <span class="arithmatex">\(v_3\)</span> reflects the energy needed to overcome both planetary and stellar gravitational wells, enabling interstellar travel. It underscores the immense challenge of escaping a star system, as the kinetic energy must satisfy:
-<span class="arithmatex">\(<span class="arithmatex">\(\frac{1}{2} m v_3^2 \geq \frac{G M m}{R} + \frac{G M_s m}{R_s}.\)</span>\)</span></p>
+$$ \frac{1}{2} m v_3^2 \geq \frac{G M m}{R} + \frac{G M_s m}{R_s}. $$</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>The first, second, and third cosmic velocities — <span class="arithmatex">\(v_1\)</span>, <span class="arithmatex">\(v_2\)</span>, and <span class="arithmatex">\(v_3\)</span>—define the energetic thresholds for orbiting, escaping a planet, and escaping a star system, respectively. Their derivations from gravitational and kinetic principles highlight their universal applicability in space exploration.</p>
+<p>The first, second, and third cosmic velocities—<span class="arithmatex">\(v_1\)</span>, <span class="arithmatex">\(v_2\)</span>, and <span class="arithmatex">\(v_3\)</span>—define the energetic thresholds for orbiting, escaping a planet, and escaping a star system, respectively. Their derivations from gravitational and kinetic principles highlight their universal applicability in space exploration.</p>
 <h1 id="escape-velocities-and-cosmic-velocities-mathematical-derivations">Escape Velocities and Cosmic Velocities: Mathematical Derivations</h1>
 <h2 id="introduction_1">Introduction</h2>
 <p>The cosmic velocities—first (<span class="arithmatex">\(v_1\)</span>), second (<span class="arithmatex">\(v_2\)</span>), and third (<span class="arithmatex">\(v_3\)</span>)—are derived from fundamental principles of classical mechanics, specifically Newton’s law of gravitation and the conservation of mechanical energy. This section identifies the key equations, provides rigorous step-by-step derivations, lists the parameters involved, and analyzes their influence on the resulting velocities.</p>
 <h2 id="key-equations">Key Equations</h2>
 <p>The foundational equations for the cosmic velocities are:
-- First cosmic velocity (orbital velocity): <span class="arithmatex">\(<span class="arithmatex">\(v_1 = \sqrt{\frac{G M}{R}}\)</span>\)</span>
-- Second cosmic velocity (escape velocity): <span class="arithmatex">\(<span class="arithmatex">\(v_2 = \sqrt{\frac{2 G M}{R}}\)</span>\)</span>
-- Third cosmic velocity (system escape velocity): <span class="arithmatex">\(<span class="arithmatex">\(v_3 \approx \sqrt{v_2^2 + (v_{\text{esc,s}} - v_{\text{orb}})^2}\)</span>\)</span></p>
+- First cosmic velocity (orbital velocity): $$ v_1 = \sqrt{\frac{G M}{R}} $$
+- Second cosmic velocity (escape velocity): $$ v_2 = \sqrt{\frac{2 G M}{R}} $$
+- Third cosmic velocity (system escape velocity): $$ v_3 \approx \sqrt{v_2^2 + (v_{\text{esc,s}} - v_{\text{orb}})^2} $$</p>
 <p>Here, <span class="arithmatex">\(G\)</span> is the gravitational constant, <span class="arithmatex">\(M\)</span> is the mass of the celestial body, <span class="arithmatex">\(R\)</span> is its radius, <span class="arithmatex">\(M_s\)</span> is the star’s mass, <span class="arithmatex">\(R_s\)</span> is the distance from the star, <span class="arithmatex">\(v_{\text{esc,s}}\)</span> is the escape velocity from the star, and <span class="arithmatex">\(v_{\text{orb}}\)</span> is the orbital velocity around the star.</p>
 <h2 id="1-derivation-of-the-first-cosmic-velocity-v_1">1. Derivation of the First Cosmic Velocity (<span class="arithmatex">\(v_1\)</span>)</h2>
 <p>The first cosmic velocity is the speed required for an object of mass <span class="arithmatex">\(m\)</span> to maintain a circular orbit at the surface of a celestial body (radius <span class="arithmatex">\(R\)</span>, mass <span class="arithmatex">\(M\)</span>).</p>
@@ -238,23 +238,23 @@ since <span class="arithmatex">\(\frac{2 G M}{R} = 2 \cdot \frac{G M}{R}\)</span
 <ol>
 <li>
 <p><strong>Newton’s Law of Gravitation</strong>: The gravitational force provides the centripetal force:
-   <span class="arithmatex">\(<span class="arithmatex">\(F_g = \frac{G M m}{R^2}.\)</span>\)</span></p>
+   $$ F_g = \frac{G M m}{R^2}. $$</p>
 </li>
 <li>
 <p><strong>Centripetal Force for Circular Motion</strong>: For an object in circular orbit at radius <span class="arithmatex">\(R\)</span>:
-   <span class="arithmatex">\(<span class="arithmatex">\(F_c = \frac{m v_1^2}{R}.\)</span>\)</span></p>
+   $$ F_c = \frac{m v_1^2}{R}. $$</p>
 </li>
 <li>
 <p><strong>Equate Forces</strong>: Since <span class="arithmatex">\(F_g\)</span> supplies <span class="arithmatex">\(F_c\)</span>:
-   <span class="arithmatex">\(<span class="arithmatex">\(\frac{m v_1^2}{R} = \frac{G M m}{R^2}.\)</span>\)</span></p>
+   $$ \frac{m v_1^2}{R} = \frac{G M m}{R^2}. $$</p>
 </li>
 <li>
 <p><strong>Simplify</strong>: Cancel <span class="arithmatex">\(m\)</span> (assuming <span class="arithmatex">\(m \neq 0\)</span>) and multiply both sides by <span class="arithmatex">\(R\)</span>:
-   <span class="arithmatex">\(<span class="arithmatex">\(v_1^2 = \frac{G M}{R}.\)</span>\)</span></p>
+   $$ v_1^2 = \frac{G M}{R}. $$</p>
 </li>
 <li>
 <p><strong>Solve for <span class="arithmatex">\(v_1\)</span></strong>:
-   <span class="arithmatex">\(<span class="arithmatex">\(v_1 = \sqrt{\frac{G M}{R}}.\)</span>\)</span></p>
+   $$ v_1 = \sqrt{\frac{G M}{R}}. $$</p>
 </li>
 </ol>
 <h3 id="physical-insight">Physical Insight</h3>
@@ -264,32 +264,32 @@ since <span class="arithmatex">\(\frac{2 G M}{R} = 2 \cdot \frac{G M}{R}\)</span
 <h3 id="step-by-step-derivation_1">Step-by-Step Derivation</h3>
 <ol>
 <li><strong>Conservation of Energy</strong>: Total mechanical energy (kinetic + potential) is conserved. At the surface:</li>
-<li>Kinetic energy: <span class="arithmatex">\(<span class="arithmatex">\(K = \frac{1}{2} m v_2^2\)</span>\)</span></li>
+<li>Kinetic energy: $$ K = \frac{1}{2} m v_2^2 $$</li>
 <li>
-<p>Potential energy: <span class="arithmatex">\(<span class="arithmatex">\(U = -\frac{G M m}{R}\)</span>\)</span></p>
+<p>Potential energy: $$ U = -\frac{G M m}{R} $$</p>
 </li>
 <li>
 <p><strong>Energy at Infinity</strong>: For escape, total energy at <span class="arithmatex">\(r \to \infty\)</span> is zero (where <span class="arithmatex">\(U = 0\)</span>):
-   $$E_{\text{total}} = K + U = 0. $$</p>
+   $$ E_{\text{total}} = K + U = 0. $$</p>
 </li>
 <li>
 <p><strong>Set Initial Energy</strong>: At the surface (<span class="arithmatex">\(r = R\)</span>):
-   <span class="arithmatex">\(<span class="arithmatex">\(\frac{1}{2} m v_2^2 - \frac{G M m}{R} = 0.\)</span>\)</span></p>
+   $$ \frac{1}{2} m v_2^2 - \frac{G M m}{R} = 0. $$</p>
 </li>
 <li>
 <p><strong>Simplify</strong>: Cancel <span class="arithmatex">\(m\)</span> and solve:
-   $$\frac{1}{2} v_2^2 = \frac{G M}{R}, $$
-   $$ v_2^2 = \frac{2 G M}{R}.$$</p>
+   $$ \frac{1}{2} v_2^2 = \frac{G M}{R}, $$
+   $$ v_2^2 = \frac{2 G M}{R}. $$</p>
 </li>
 <li>
 <p><strong>Solve for <span class="arithmatex">\(v_2\)</span></strong>:
-   <span class="arithmatex">\(<span class="arithmatex">\(v_2 = \sqrt{\frac{2 G M}{R}}.\)</span>\)</span></p>
+   $$ v_2 = \sqrt{\frac{2 G M}{R}}. $$</p>
 </li>
 </ol>
 <h3 id="relation-to-v_1">Relation to <span class="arithmatex">\(v_1\)</span>:</h3>
 <p>Since <span class="arithmatex">\(v_1^2 = \frac{G M}{R}\)</span>, we find:
-<span class="arithmatex">\(<span class="arithmatex">\(v_2^2 = 2 v_1^2,\)</span>\)</span>
-<span class="arithmatex">\(<span class="arithmatex">\(v_2 = \sqrt{2} \cdot v_1.\)</span>\)</span></p>
+$$ v_2^2 = 2 v_1^2, $$
+$$ v_2 = \sqrt{2} \cdot v_1. $$</p>
 <h3 id="physical-insight_1">Physical Insight</h3>
 <p>The factor of 2 arises because escape requires doubling the kinetic energy relative to orbiting, overcoming the full potential well.</p>
 <h2 id="3-derivation-of-the-third-cosmic-velocity-v_3">3. Derivation of the Third Cosmic Velocity (<span class="arithmatex">\(v_3\)</span>)</h2>
@@ -298,28 +298,28 @@ since <span class="arithmatex">\(\frac{2 G M}{R} = 2 \cdot \frac{G M}{R}\)</span
 <ol>
 <li>
 <p><strong>Planetary Escape</strong>: From the planet (e.g., Earth), use <span class="arithmatex">\(v_2\)</span>:
-   <span class="arithmatex">\(<span class="arithmatex">\(v_2 = \sqrt{\frac{2 G M}{R}}.\)</span>\)</span></p>
+   $$ v_2 = \sqrt{\frac{2 G M}{R}}. $$</p>
 </li>
 <li>
 <p><strong>Stellar Potential</strong>: At the planet’s distance from the star (<span class="arithmatex">\(R_s\)</span>, <span class="arithmatex">\(M_s\)</span>):
-   <span class="arithmatex">\(<span class="arithmatex">\(U_s = -\frac{G M_s m}{R_s}.\)</span>\)</span></p>
+   $$ U_s = -\frac{G M_s m}{R_s}. $$</p>
 </li>
 <li>
 <p><strong>Orbital Velocity Around Star</strong>: The planet’s orbital speed:
-   <span class="arithmatex">\(<span class="arithmatex">\(v_{\text{orb}} = \sqrt{\frac{G M_s}{R_s}}.\)</span>\)</span></p>
+   $$ v_{\text{orb}} = \sqrt{\frac{G M_s}{R_s}}. $$</p>
 </li>
 <li>
 <p><strong>Escape Velocity from Star</strong>: From the planet’s orbit:
-   <span class="arithmatex">\(<span class="arithmatex">\(v_{\text{esc,s}} = \sqrt{\frac{2 G M_s}{R_s}} = \sqrt{2} \cdot v_{\text{orb}}.\)</span>\)</span></p>
+   $$ v_{\text{esc,s}} = \sqrt{\frac{2 G M_s}{R_s}} = \sqrt{2} \cdot v_{\text{orb}}. $$</p>
 </li>
 <li>
 <p><strong>Excess Velocity</strong>: The additional speed beyond <span class="arithmatex">\(v_{\text{orb}}\)</span> to escape the star:
-   <span class="arithmatex">\(<span class="arithmatex">\(v_{\text{excess}} = v_{\text{esc,s}} - v_{\text{orb}}.\)</span>\)</span></p>
+   $$ v_{\text{excess}} = v_{\text{esc,s}} - v_{\text{orb}}. $$</p>
 </li>
 <li>
 <p><strong>Total Velocity</strong>: Combine velocities vectorially (approximate):
-   <span class="arithmatex">\(<span class="arithmatex">\(v_3^2 = v_2^2 + (v_{\text{esc,s}} - v_{\text{orb}})^2,\)</span>\)</span>
-<span class="arithmatex">\(<span class="arithmatex">\(v_3 = \sqrt{v_2^2 + (v_{\text{esc,s}} - v_{\text{orb}})^2}.\)</span>\)</span></p>
+   $$ v_3^2 = v_2^2 + (v_{\text{esc,s}} - v_{\text{orb}})^2, $$
+   $$ v_3 = \sqrt{v_2^2 + (v_{\text{esc,s}} - v_{\text{orb}})^2}. $$</p>
 </li>
 </ol>
 <h3 id="physical-insight_2">Physical Insight</h3>
@@ -336,11 +336,11 @@ since <span class="arithmatex">\(\frac{2 G M}{R} = 2 \cdot \frac{G M}{R}\)</span
 <ol>
 <li>
 <p><strong>Mass (<span class="arithmatex">\(M\)</span>)</strong>: Velocities <span class="arithmatex">\(v_1\)</span> and <span class="arithmatex">\(v_2\)</span> increase with <span class="arithmatex">\(M\)</span> (<span class="arithmatex">\(v_1, v_2 \propto \sqrt{M}\)</span>). For <span class="arithmatex">\(v_3\)</span>, both <span class="arithmatex">\(M\)</span> and <span class="arithmatex">\(M_s\)</span> amplify the required speed.
-    <span class="arithmatex">\(<span class="arithmatex">\(\frac{\partial v_1}{\partial M} &gt; 0.\)</span>\)</span></p>
+    $$ \frac{\partial v_1}{\partial M} &gt; 0. $$</p>
 </li>
 <li>
 <p><strong>Radius (<span class="arithmatex">\(R\)</span>)</strong>: Velocities <span class="arithmatex">\(v_1\)</span> and <span class="arithmatex">\(v_2\)</span> decrease with <span class="arithmatex">\(R\)</span> (<span class="arithmatex">\(v_1, v_2 \propto \frac{1}{\sqrt{R}}\)</span>), as gravitational strength weakens with distance.
-    <span class="arithmatex">\(<span class="arithmatex">\(\frac{\partial v_1}{\partial R} &lt; 0.\)</span>\)</span></p>
+    $$ \frac{\partial v_1}{\partial R} &lt; 0. $$</p>
 </li>
 <li>
 <p><strong>Gravitational Constant (<span class="arithmatex">\(G\)</span>)</strong>: All velocities scale proportionally with <span class="arithmatex">\(G\)</span> (<span class="arithmatex">\(v_1, v_2 \propto \sqrt{G}\)</span>).</p>
