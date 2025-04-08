@@ -287,3 +287,7 @@ plt.tight_layout(rect=[0, 0, 1, 0.95])
 plt.show()
 ```
 
+# Colab
+
+[Colab](https://colab.research.google.com/drive/1g31kSJsT5uU2NXPcMX9XMOXIZ-2-rohG#scrollTo=3R3fbLG8Y6_c)
+
