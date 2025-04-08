@@ -9,20 +9,20 @@ The study of cosmic velocities is foundational to celestial mechanics and space 
 The *first cosmic velocity*, denoted $v_1$, is the minimum speed required for an object to maintain a circular orbit around a celestial body at its surface. It arises from balancing the centripetal force required for circular motion with the gravitational force exerted by the body.
 
 The gravitational force on an object of mass $m$ at the surface of a body with mass $M$ and radius $R$ is given by Newton's law of gravitation:
-$$ F_g = \frac{G M m}{R^2}, $$
+$$F_g = \frac{G M m}{R^2},$$
 where $G$ is the gravitational constant ($G \approx 6.674 \times 10^{-11} \, \text{m}^3 \text{kg}^{-1} \text{s}^{-2}$).
 
 For circular motion, the centripetal force is provided by gravity, such that:
-$$ F_c = \frac{m v_1^2}{R} = F_g. $$
+$$F_c = \frac{m v_1^2}{R} = F_g.$$
 
 Equating these forces:
-$$ \frac{m v_1^2}{R} = \frac{G M m}{R^2}. $$
+$$\frac{m v_1^2}{R} = \frac{G M m}{R^2}.$$
 
 Canceling $m$ (assuming $m \neq 0$) and simplifying:
-$$ v_1^2 = \frac{G M}{R}. $$
+$$v_1^2 = \frac{G M}{R}.$$
 
 Thus, the first cosmic velocity is:
-$$ v_1 = \sqrt{\frac{G M}{R}}. $$
+$$v_1 = \sqrt{\frac{G M}{R}}.$$
 
 ### Physical Meaning
 The velocity $v_1$ represents the threshold where an object’s kinetic energy per unit mass, $\frac{1}{2} v_1^2$, equals the gravitational potential energy per unit mass at the surface, adjusted for circular motion. For Earth ($M = 5.972 \times 10^{24} \, \text{kg}$, $R = 6.371 \times 10^6 \, \text{m}$), $v_1 \approx 7.91 \, \text{km/s}$. This speed enables satellites to orbit without escaping or falling back.
@@ -31,17 +31,17 @@ The velocity $v_1$ represents the threshold where an object’s kinetic energy p
 The *second cosmic velocity*, denoted $v_2$, is the minimum speed required to escape a celestial body’s gravitational influence entirely, assuming no atmospheric drag or external forces. It corresponds to the point where the total mechanical energy (kinetic plus potential) becomes zero at infinity.
 
 The gravitational potential energy at distance $r$ from the center of mass is:
-$$ U = -\frac{G M m}{r}. $$
+$$U = -\frac{G M m}{r}.$$
 
 At the surface ($r = R$), the potential energy is $-\frac{G M m}{R}$. To escape, the kinetic energy at launch must equal the magnitude of this potential energy:
-$$ \frac{1}{2} m v_2^2 = \frac{G M m}{R}. $$
+$$\frac{1}{2} m v_2^2 = \frac{G M m}{R}.$$
 
 Canceling $m$ and solving:
-$$ v_2^2 = \frac{2 G M}{R}, $$
-$$ v_2 = \sqrt{\frac{2 G M}{R}}. $$
+$$v_2^2 = \frac{2 G M}{R},$$
+$$v_2 = \sqrt{\frac{2 G M}{R}}.$$
 
 Notably, comparing $v_2$ to $v_1$:
-$$ v_2 = \sqrt{2} \cdot v_1, $$
+$$v_2 = \sqrt{2} \cdot v_1,$$
 since $\frac{2 G M}{R} = 2 \cdot \frac{G M}{R}$.
 
 ### Physical Meaning
@@ -55,22 +55,22 @@ Consider an object escaping Earth’s gravity ($v_2$) while orbiting the Sun (ma
 - Additional velocity to escape the Sun’s gravity from Earth’s orbital radius.
 
 The Sun’s potential at Earth’s distance ($R_s \approx 1.496 \times 10^{11} \, \text{m}$) is:
-$$ U_s = -\frac{G M_s m}{R_s}. $$
+$$U_s = -\frac{G M_s m}{R_s}.$$
 
 Earth’s orbital velocity around the Sun is:
-$$ v_{\text{orb}} = \sqrt{\frac{G M_s}{R_s}} \approx 29.78 \, \text{km/s}. $$
+$$v_{\text{orb}} = \sqrt{\frac{G M_s}{R_s}} \approx 29.78 \, \text{km/s}.$$
 
 The velocity to escape the Sun from Earth’s orbit is:
-$$ v_{\text{esc,s}} = \sqrt{2} \cdot v_{\text{orb}} \approx 42.1 \, \text{km/s}. $$
+$$v_{\text{esc,s}} = \sqrt{2} \cdot v_{\text{orb}} \approx 42.1 \, \text{km/s}.$$
 
 The third cosmic velocity combines Earth escape and Solar escape, approximated as:
-$$ v_3 \approx \sqrt{v_2^2 + (v_{\text{esc,s}} - v_{\text{orb}})^2}. $$
+$$v_3 \approx \sqrt{v_2^2 + (v_{\text{esc,s}} - v_{\text{orb}})^2}.$$
 
 For Earth, $v_3 \approx 16.6 \, \text{km/s}$ from the surface, though exact values depend on trajectory.
 
 ### Physical Meaning
 The velocity $v_3$ reflects the energy needed to overcome both planetary and stellar gravitational wells, enabling interstellar travel. It underscores the immense challenge of escaping a star system, as the kinetic energy must satisfy:
-$$ \frac{1}{2} m v_3^2 \geq \frac{G M m}{R} + \frac{G M_s m}{R_s}. $$
+$$\frac{1}{2} m v_3^2 \geq \frac{G M m}{R} + \frac{G M_s m}{R_s}.$$
 
 ## Conclusion
 The first, second, and third cosmic velocities—$v_1$, $v_2$, and $v_3$—define the energetic thresholds for orbiting, escaping a planet, and escaping a star system, respectively. Their derivations from gravitational and kinetic principles highlight their universal applicability in space exploration.
@@ -82,9 +82,9 @@ The cosmic velocities—first ($v_1$), second ($v_2$), and third ($v_3$)—are d
 
 ## Key Equations
 The foundational equations for the cosmic velocities are:
-- First cosmic velocity (orbital velocity): $$ v_1 = \sqrt{\frac{G M}{R}} $$
-- Second cosmic velocity (escape velocity): $$ v_2 = \sqrt{\frac{2 G M}{R}} $$
-- Third cosmic velocity (system escape velocity): $$ v_3 \approx \sqrt{v_2^2 + (v_{\text{esc,s}} - v_{\text{orb}})^2} $$
+- First cosmic velocity (orbital velocity): $$v_1 = \sqrt{\frac{G M}{R}}$$
+- Second cosmic velocity (escape velocity): $$v_2 = \sqrt{\frac{2 G M}{R}}$$
+- Third cosmic velocity (system escape velocity): $$v_3 \approx \sqrt{v_2^2 + (v_{\text{esc,s}} - v_{\text{orb}})^2}$$
 
 Here, $G$ is the gravitational constant, $M$ is the mass of the celestial body, $R$ is its radius, $M_s$ is the star’s mass, $R_s$ is the distance from the star, $v_{\text{esc,s}}$ is the escape velocity from the star, and $v_{\text{orb}}$ is the orbital velocity around the star.
 
@@ -93,19 +93,19 @@ The first cosmic velocity is the speed required for an object of mass $m$ to mai
 
 ### Step-by-Step Derivation
 1. **Newton’s Law of Gravitation**: The gravitational force provides the centripetal force:
-   $$ F_g = \frac{G M m}{R^2}. $$
+   $$F_g = \frac{G M m}{R^2}.$$
 
 2. **Centripetal Force for Circular Motion**: For an object in circular orbit at radius $R$:
-   $$ F_c = \frac{m v_1^2}{R}. $$
+   $$F_c = \frac{m v_1^2}{R}.$$
 
 3. **Equate Forces**: Since $F_g$ supplies $F_c$:
-   $$ \frac{m v_1^2}{R} = \frac{G M m}{R^2}. $$
+   $$\frac{m v_1^2}{R} = \frac{G M m}{R^2}.$$
 
 4. **Simplify**: Cancel $m$ (assuming $m \neq 0$) and multiply both sides by $R$:
-   $$ v_1^2 = \frac{G M}{R}. $$
+   $$v_1^2 = \frac{G M}{R}.$$
 
 5. **Solve for $v_1$**:
-   $$ v_1 = \sqrt{\frac{G M}{R}}. $$
+   $$v_1 = \sqrt{\frac{G M}{R}}.$$
 
 ### Physical Insight
 The term $\frac{G M}{R}$ is the gravitational parameter divided by distance, representing the specific energy required for circular motion.
@@ -115,26 +115,26 @@ The second cosmic velocity is the minimum speed to escape a celestial body’s g
 
 ### Step-by-Step Derivation
 1. **Conservation of Energy**: Total mechanical energy (kinetic + potential) is conserved. At the surface:
-   - Kinetic energy: $$ K = \frac{1}{2} m v_2^2 $$
-   - Potential energy: $$ U = -\frac{G M m}{R} $$
+   - Kinetic energy: $$K = \frac{1}{2} m v_2^2$$
+   - Potential energy: $$U = -\frac{G M m}{R}$$
 
 2. **Energy at Infinity**: For escape, total energy at $r \to \infty$ is zero (where $U = 0$):
-   $$ E_{\text{total}} = K + U = 0. $$
+   $$E_{\text{total}} = K + U = 0. $$
 
 3. **Set Initial Energy**: At the surface ($r = R$):
-   $$ \frac{1}{2} m v_2^2 - \frac{G M m}{R} = 0. $$
+   $$\frac{1}{2} m v_2^2 - \frac{G M m}{R} = 0.$$
 
 4. **Simplify**: Cancel $m$ and solve:
-   $$ \frac{1}{2} v_2^2 = \frac{G M}{R}, $$
-   $$ v_2^2 = \frac{2 G M}{R}. $$
+   $$\frac{1}{2} v_2^2 = \frac{G M}{R}, $$
+   $$ v_2^2 = \frac{2 G M}{R}.$$
 
 5. **Solve for $v_2$**:
-   $$ v_2 = \sqrt{\frac{2 G M}{R}}. $$
+   $$v_2 = \sqrt{\frac{2 G M}{R}}.$$
 
 ### Relation to $v_1$:
 Since $v_1^2 = \frac{G M}{R}$, we find:
-$$ v_2^2 = 2 v_1^2, $$
-$$ v_2 = \sqrt{2} \cdot v_1. $$
+$$v_2^2 = 2 v_1^2,$$
+$$v_2 = \sqrt{2} \cdot v_1.$$
 
 ### Physical Insight
 The factor of 2 arises because escape requires doubling the kinetic energy relative to orbiting, overcoming the full potential well.
@@ -144,23 +144,23 @@ The third cosmic velocity is the speed to escape a star system (e.g., the Sun) f
 
 ### Step-by-Step Derivation
 1. **Planetary Escape**: From the planet (e.g., Earth), use $v_2$:
-   $$ v_2 = \sqrt{\frac{2 G M}{R}}. $$
+   $$v_2 = \sqrt{\frac{2 G M}{R}}.$$
 
 2. **Stellar Potential**: At the planet’s distance from the star ($R_s$, $M_s$):
-   $$ U_s = -\frac{G M_s m}{R_s}. $$
+   $$U_s = -\frac{G M_s m}{R_s}.$$
 
 3. **Orbital Velocity Around Star**: The planet’s orbital speed:
-   $$ v_{\text{orb}} = \sqrt{\frac{G M_s}{R_s}}. $$
+   $$v_{\text{orb}} = \sqrt{\frac{G M_s}{R_s}}.$$
 
 4. **Escape Velocity from Star**: From the planet’s orbit:
-   $$ v_{\text{esc,s}} = \sqrt{\frac{2 G M_s}{R_s}} = \sqrt{2} \cdot v_{\text{orb}}. $$
+   $$v_{\text{esc,s}} = \sqrt{\frac{2 G M_s}{R_s}} = \sqrt{2} \cdot v_{\text{orb}}.$$
 
 5. **Excess Velocity**: The additional speed beyond $v_{\text{orb}}$ to escape the star:
-   $$ v_{\text{excess}} = v_{\text{esc,s}} - v_{\text{orb}}. $$
+   $$v_{\text{excess}} = v_{\text{esc,s}} - v_{\text{orb}}.$$
 
 6. **Total Velocity**: Combine velocities vectorially (approximate):
-   $$ v_3^2 = v_2^2 + (v_{\text{esc,s}} - v_{\text{orb}})^2, $$
-   $$ v_3 = \sqrt{v_2^2 + (v_{\text{esc,s}} - v_{\text{orb}})^2}. $$
+   $$v_3^2 = v_2^2 + (v_{\text{esc,s}} - v_{\text{orb}})^2,$$
+   $$v_3 = \sqrt{v_2^2 + (v_{\text{esc,s}} - v_{\text{orb}})^2}.$$
 
 ### Physical Insight
 The derivation accounts for two gravitational potentials, requiring a velocity composition that exceeds both local and system-wide escape thresholds.
@@ -174,10 +174,10 @@ The derivation accounts for two gravitational potentials, requiring a velocity c
 
 ## Influence of Parameters
 1. **Mass ($M$)**: Velocities $v_1$ and $v_2$ increase with $M$ ($v_1, v_2 \propto \sqrt{M}$). For $v_3$, both $M$ and $M_s$ amplify the required speed.
-    $$ \frac{\partial v_1}{\partial M} > 0. $$
+    $$\frac{\partial v_1}{\partial M} > 0.$$
 
 2. **Radius ($R$)**: Velocities $v_1$ and $v_2$ decrease with $R$ ($v_1, v_2 \propto \frac{1}{\sqrt{R}}$), as gravitational strength weakens with distance.
-    $$ \frac{\partial v_1}{\partial R} < 0. $$
+    $$\frac{\partial v_1}{\partial R} < 0.$$
 
 3. **Gravitational Constant ($G$)**: All velocities scale proportionally with $G$ ($v_1, v_2 \propto \sqrt{G}$).
 
