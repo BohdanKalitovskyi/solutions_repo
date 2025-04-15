@@ -1,258 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orbital Mechanics Simulator</title>
-    <style>
-        /* CSS Styling */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Orbital Mechanics Simulator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
 
-        .container {
-            text-align: center;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 80%;
-            max-width: 1200px;
-        }
+    .container {
+      text-align: center;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 80%;
+      max-width: 1200px;
+    }
 
-        h1 {
-            color: #333;
-            margin-bottom: 20px;
-        }
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
 
-        canvas {
-            border: 2px solid #ccc;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
+    canvas {
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
 
-        .controls {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
-        label {
-            font-weight: bold;
-        }
+    label {
+      font-weight: bold;
+    }
 
-        input[type="range"] {
-            width: 100%;
-            margin-bottom: 5px;
-        }
+    input[type="range"] {
+      width: 100%;
+      margin-bottom: 5px;
+    }
 
-        span {
-            font-size: 0.9em;
-            color: #555;
-        }
-    </style>
+    span {
+      font-size: 0.9em;
+      color: #555;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Orbital Mechanics Simulator</h1>
-        <canvas id="simulationCanvas"></canvas>
-        <div class="controls">
-            <label for="massCentralBody">Mass of Central Body (kg):</label>
-            <input type="range" id="massCentralBody" min="1e22" max="1e26" step="1e22" value="1e24">
-            <span id="massCentralBodyValue">1e24 kg</span><br>
+  <div class="container">
+    <h1>Orbital Mechanics Simulator</h1>
+    <canvas id="simulationCanvas"></canvas>
+    <div class="controls">
+      <label for="massCentralBody">Маса центрального тіла (кг):</label>
+      <input type="range" id="massCentralBody" min="1e22" max="1e26" step="1e22" value="1e24">
+      <span id="massCentralBodyValue">1e24 кг</span><br>
 
+      <label for="initialVelocity">Початкова швидкість (м/с):</label>
+      <input type="range" id="initialVelocity" min="1000" max="15000" step="100" value="7000">
+      <span id="initialVelocityValue">7000 м/с</span><br>
 
-            <label for="initialVelocity">Initial Velocity (m/s):</label>
-            <input type="range" id="initialVelocity" min="1000" max="15000" step="100" value="7000">
-            <span id="initialVelocityValue">7000 m/s</span><br>
-
-            <label for="altitude">Initial Altitude Above Surface (km):</label>
-            <input type="range" id="altitude" min="100" max="5000" step="100" value="1000">
-            <span id="altitudeValue">1000 km</span><br>
-        </div>
+      <label for="altitude">Початкова висота над поверхнею (км):</label>
+      <input type="range" id="altitude" min="100" max="5000" step="100" value="1000">
+      <span id="altitudeValue">1000 км</span><br>
     </div>
+  </div>
 
-    <script>
-        // JavaScript Logic
-        document.addEventListener("DOMContentLoaded", () => {
-            const canvas = document.getElementById("simulationCanvas");
-            const ctx = canvas.getContext("2d");
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const canvas = document.getElementById("simulationCanvas");
+  const ctx = canvas.getContext("2d");
 
-            // Increase canvas dimensions
-            const CANVAS_WIDTH = 1200; // Larger width
-            const CANVAS_HEIGHT = 800;
-            canvas.width = CANVAS_WIDTH;
-            canvas.height = CANVAS_HEIGHT;
+  const CANVAS_WIDTH = 1200;
+  const CANVAS_HEIGHT = 800;
+  canvas.width = CANVAS_WIDTH;
+  canvas.height = CANVAS_HEIGHT;
 
-            // Initial parameters
-            let massCentralBody = 1e24; // Mass of central body in kg
-            let massOrbitingBody = 1e20; // Mass of orbiting body in kg
-            let initialVelocity = 7000; // Initial velocity in m/s
-            let altitude = 1000e3; // Initial altitude in meters
+  // Початкові параметри
+  let massCentralBody = 1e24; // Маса центрального тіла (кг)
+  let initialVelocity = 7000; // Початкова швидкість тестової маси (м/с)
+  let altitude = 1000e3; // Початкова висота над поверхнею Землі (м)
 
-            // Constants
-            const G = 6.67430e-11; // Gravitational constant (m^3 kg^-1 s^-2)
-            const R_Earth = 6.371e6; // Radius of Earth in meters
+  // Константи
+  const G = 6.67430e-11; // Гравітаційна стала (м^3 кг^-1 с^-2)
+  const R_Earth = 6.371e6; // Радіус Землі (м)
 
-            // UI elements
-            const massCentralBodySlider = document.getElementById("massCentralBody");
-            const massOrbitingBodySlider = document.getElementById("massOrbitingBody");
-            const initialVelocitySlider = document.getElementById("initialVelocity");
-            const altitudeSlider = document.getElementById("altitude");
+  // Елементи інтерфейсу
+  const massCentralBodySlider = document.getElementById("massCentralBody");
+  const initialVelocitySlider = document.getElementById("initialVelocity");
+  const altitudeSlider = document.getElementById("altitude");
 
-            const massCentralBodyValue = document.getElementById("massCentralBodyValue");
-            const massOrbitingBodyValue = document.getElementById("massOrbitingBodyValue");
-            const initialVelocityValue = document.getElementById("initialVelocityValue");
-            const altitudeValue = document.getElementById("altitudeValue");
+  const massCentralBodyValue = document.getElementById("massCentralBodyValue");
+  const initialVelocityValue = document.getElementById("initialVelocityValue");
+  const altitudeValue = document.getElementById("altitudeValue");
 
-            // Update parameter values on slider change
-            massCentralBodySlider.oninput = () => {
-                massCentralBody = parseFloat(massCentralBodySlider.value);
-                massCentralBodyValue.textContent = `${massCentralBody.toExponential(2)} kg`;
-                resetSimulation();
-            };
+  // Оновлення значень параметрів
+  massCentralBodySlider.oninput = () => {
+    massCentralBody = parseFloat(massCentralBodySlider.value);
+    massCentralBodyValue.textContent = `${massCentralBody.toExponential(2)} кг`;
+    resetSimulation();
+  };
 
-            massOrbitingBodySlider.oninput = () => {
-                massOrbitingBody = parseFloat(massOrbitingBodySlider.value);
-                massOrbitingBodyValue.textContent = `${massOrbitingBody.toExponential(2)} kg`;
-                resetSimulation();
-            };
+  initialVelocitySlider.oninput = () => {
+    initialVelocity = parseFloat(initialVelocitySlider.value);
+    initialVelocityValue.textContent = `${initialVelocity} м/с`;
+    resetSimulation();
+  };
 
-            initialVelocitySlider.oninput = () => {
-                initialVelocity = parseFloat(initialVelocitySlider.value);
-                initialVelocityValue.textContent = `${initialVelocity} m/s`;
-                resetSimulation();
-            };
+  altitudeSlider.oninput = () => {
+    altitude = parseFloat(altitudeSlider.value) * 1e3; // Конвертація км у м
+    altitudeValue.textContent = `${parseFloat(altitudeSlider.value)} км`;
+    resetSimulation();
+  };
 
-            altitudeSlider.oninput = () => {
-                altitude = parseFloat(altitudeSlider.value) * 1e3; // Convert km to m
-                altitudeValue.textContent = `${parseFloat(altitudeSlider.value)} km`;
-                resetSimulation();
-            };
+  // Змінні симуляції
+  let x, y, vx, vy, trail;
+  const dt = 10; // Крок часу (с)
+  const maxTrailPoints = 1000;
 
-            // Initialize simulation variables
-            let x = R_Earth + altitude; // Initial x position
-            let y = 0; // Initial y position
-            let vx = 0; // Initial x velocity
-            let vy = initialVelocity; // Initial y velocity
-            let trail = []; // To store the trajectory points
+  // Прапорець для перевірки стану симуляції
+  let isCollision = false;
 
-            // Simulation parameters
-            const dt = 10; // Time step in seconds
-            const maxTrailPoints = 1000; // Maximum number of trail points
+  // Масштабування та центрування
+  const scale = 100 / R_Earth; // Масштаб: радіус Землі = 100 пікселів
+  const centerX = CANVAS_WIDTH / 2;
+  const centerY = CANVAS_HEIGHT / 2;
 
-            // Draw the Earth
-            function drawEarth() {
-                ctx.beginPath();
-                ctx.arc(
-                    CANVAS_WIDTH * 0.7, // Place Earth at 70% of the width
-                    CANVAS_HEIGHT / 2,
-                    R_Earth * (CANVAS_WIDTH / (12 * R_Earth)), // Scale Earth to be smaller
-                    0,
-                    2 * Math.PI
-                );
-                ctx.fillStyle = "#3498db";
-                ctx.fill();
-            }
+  function resetSimulation() {
+    x = R_Earth + altitude; // Початкова позиція (м)
+    y = 0;
+    vx = 0;
+    vy = initialVelocity; // Початкова швидкість (м/с)
+    trail = [];
+    isCollision = false;
+  }
 
-            // Draw the orbiting body
-            function drawOrbitingBody(x, y) {
-                ctx.beginPath();
-                ctx.arc(
-                    CANVAS_WIDTH * 0.7 + x * (CANVAS_WIDTH / (12 * R_Earth)),
-                    CANVAS_HEIGHT / 2 + y * (CANVAS_HEIGHT / (12 * R_Earth)),
-                    5,
-                    0,
-                    2 * Math.PI
-                );
-                ctx.fillStyle = "#ff6b6b";
-                ctx.fill();
-            }
+  function drawEarth() {
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, R_Earth * scale, 0, 2 * Math.PI);
+    ctx.fillStyle = "#3498db";
+    ctx.fill();
+  }
 
-            // Draw the trail
-            function drawTrail(trail) {
-                ctx.beginPath();
-                ctx.strokeStyle = "#34495e";
-                ctx.lineWidth = 1;
-                for (let i = 0; i < trail.length; i++) {
-                    const [tx, ty] = trail[i];
-                    if (i === 0) {
-                        ctx.moveTo(
-                            CANVAS_WIDTH * 0.7 + tx * (CANVAS_WIDTH / (12 * R_Earth)),
-                            CANVAS_HEIGHT / 2 + ty * (CANVAS_HEIGHT / (12 * R_Earth))
-                        );
-                    } else {
-                        ctx.lineTo(
-                            CANVAS_WIDTH * 0.7 + tx * (CANVAS_WIDTH / (12 * R_Earth)),
-                            CANVAS_HEIGHT / 2 + ty * (CANVAS_HEIGHT / (12 * R_Earth))
-                        );
-                    }
-                }
-                ctx.stroke();
-            }
+  function drawOrbitingBody(x, y) {
+    ctx.beginPath();
+    ctx.arc(centerX + x * scale, centerY + y * scale, 5, 0, 2 * Math.PI);
+    ctx.fillStyle = "#ff6b6b";
+    ctx.fill();
+  }
 
-            // Update the simulation
-            function update() {
-                // Calculate acceleration
-                const r = Math.sqrt(x * x + y * y);
-                const totalMass = massCentralBody + massOrbitingBody; // Include mass of orbiting body
-                const ax = -G * totalMass * x / Math.pow(r, 3);
-                const ay = -G * totalMass * y / Math.pow(r, 3);
+  function drawTrail(trail) {
+    ctx.beginPath();
+    ctx.strokeStyle = "#34495e";
+    ctx.lineWidth = 1;
+    for (let i = 0; i < trail.length; i++) {
+      const [tx, ty] = trail[i];
+      if (i === 0) {
+        ctx.moveTo(centerX + tx * scale, centerY + ty * scale);
+      } else {
+        ctx.lineTo(centerX + tx * scale, centerY + ty * scale);
+      }
+    }
+    ctx.stroke();
+  }
 
-                // Update velocity
-                vx += ax * dt;
-                vy += ay * dt;
+  function update() {
+    const r = Math.sqrt(x * x + y * y);
 
-                // Update position
-                x += vx * dt;
-                y += vy * dt;
+    // Розрахунок прискорення від гравітації центрального тіла
+    const ax = -G * massCentralBody * x / Math.pow(r, 3);
+    const ay = -G * massCentralBody * y / Math.pow(r, 3);
 
-                // Store the current position in the trail
-                trail.push([x, y]);
-                if (trail.length > maxTrailPoints) {
-                    trail.shift(); // Remove oldest point to limit trail length
-                }
-            }
+    // Оновлення швидкості
+    vx += ax * dt;
+    vy += ay * dt;
 
-            // Reset the simulation
-            function resetSimulation() {
-                x = R_Earth + altitude;
-                y = 0;
-                vx = 0;
-                vy = initialVelocity;
-                trail = [];
-            }
+    // Прогнозування нової позиції
+    const newX = x + vx * dt;
+    const newY = y + vy * dt;
+    const newR = Math.sqrt(newX * newX + newY * newY);
 
-            // Main animation loop
-            function animate() {
-                ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+    // Перевірка зіткнення з поверхнею Землі
+    if (newR <= R_Earth) {
+      isCollision = true;
+      resetSimulation();
+      return;
+    }
 
-                // Draw Earth
-                drawEarth();
+    // Оновлення позиції, якщо немає зіткнення
+    x = newX;
+    y = newY;
 
-                // Update simulation
-                update();
+    trail.push([x, y]);
+    if (trail.length > maxTrailPoints) trail.shift();
+  }
 
-                // Draw trail
-                drawTrail(trail);
+  function animate() {
+    ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+    drawEarth();
 
-                // Draw orbiting body
-                drawOrbitingBody(x, y);
+    if (!isCollision) {
+      update();
+      drawTrail(trail);
+      drawOrbitingBody(x, y);
+    } else {
+      trail = [];
+    }
 
-                requestAnimationFrame(animate);
-            }
+    requestAnimationFrame(animate);
+  }
 
-            // Start the simulation
-            resetSimulation();
-            animate();
-        });
-    </script>
+  resetSimulation();
+  animate();
+});
+  </script>
 </body>
 </html>
