@@ -233,6 +233,31 @@
 <div class="arithmatex">\[ \ddot{\mathbf{r}} = -\frac{\mu}{r^3} \mathbf{r}, \]</div>
 <p>where <span class="arithmatex">\(\mu \approx 3.986 \times 10^{14} \, \text{m}^3 \text{s}^{-2}\)</span> is Earth's gravitational parameter, and <span class="arithmatex">\(r = |\mathbf{r}|\)</span>. We use the Runge-Kutta method of order 4 (RK4) to integrate the system, converted to first-order ODEs with state vector <span class="arithmatex">\(\mathbf{y} = [\mathbf{r}, \mathbf{v}]^T\)</span>:</p>
 <div class="arithmatex">\[ \frac{d\mathbf{y}}{dt} = \begin{bmatrix} \mathbf{v} \\ -\frac{\mu}{r^3} \mathbf{r} \end{bmatrix}. \]</div>
+<h3 id="rk4-method-general-example">RK4 Method: General Example</h3>
+<p>To illustrate the Runge-Kutta 4th-order (RK4) method used in trajectory propagation, we first demonstrate it on a simpler differential equation before applying it to the two-body problem. Consider the first-order ODE:</p>
+<div class="arithmatex">\[ \frac{dy}{dt} = f(t, y) = y - t^2 + 1, \quad y(0) = 0.5, \]</div>
+<p>with a step size <span class="arithmatex">\( h = 0.2 \)</span>. We compute the next state <span class="arithmatex">\( y_1 \)</span> at <span class="arithmatex">\( t = 0.2 \)</span>.</p>
+<h4 id="step-1-compute-intermediate-increments">Step 1: Compute Intermediate Increments</h4>
+<p>The RK4 method calculates four increments:</p>
+<div class="arithmatex">\[ \begin{aligned}
+k_1 &amp;= f(t_0, y_0) = f(0, 0.5) = 0.5 - 0^2 + 1 = 1.5, \\
+k_2 &amp;= f\left(t_0 + \frac{h}{2}, y_0 + \frac{h}{2} k_1\right) = f(0.1, 0.5 + 0.1 \cdot 1.5) = f(0.1, 0.575) \\
+    &amp;= 0.575 - 0.1^2 + 1 = 0.575 - 0.01 + 1 = 1.565, \\
+k_3 &amp;= f\left(t_0 + \frac{h}{2}, y_0 + \frac{h}{2} k_2\right) = f(0.1, 0.5 + 0.1 \cdot 1.565) = f(0.1, 0.57825) \\
+    &amp;= 0.57825 - 0.01 + 1 = 1.56825, \\
+k_4 &amp;= f(t_0 + h, y_0 + h \cdot k_3) = f(0.2, 0.5 + 0.2 \cdot 1.56825) = f(0.2, 0.81365) \\
+    &amp;= 0.81365 - 0.04 + 1 = 1.77365.
+\end{aligned} \]</div>
+<h4 id="step-2-update-the-state">Step 2: Update the State</h4>
+<p>The next state is computed as:</p>
+<div class="arithmatex">\[ \begin{aligned}
+y_1 &amp;= y_0 + \frac{h}{6} (k_1 + 2 k_2 + 2 k_3 + k_4) \\
+    &amp;= 0.5 + \frac{0.2}{6} (1.5 + 2 \cdot 1.565 + 2 \cdot 1.56825 + 1.77365) \\
+    &amp;= 0.5 + \frac{0.2}{6} (1.5 + 3.13 + 3.1365 + 1.77365) \\
+    &amp;= 0.5 + \frac{0.2}{6} \cdot 9.54015 \approx 0.5 + 0.318005 \\
+    &amp;= 0.818.
+\end{aligned} \]</div>
+<p>Thus, <span class="arithmatex">\( y(0.2) \approx 0.818 \)</span>. This example clarifies the RK4 process, which we apply to the two-body problem in the following steps.</p>
 <h3 id="initial-conditions-setup">Initial Conditions Setup</h3>
 <p>Assume the payload is released at <span class="arithmatex">\(t = 0\)</span> with position <span class="arithmatex">\(\mathbf{r}_0 = [r_0, 0, 0]^T = [6,571 \times 10^3, 0, 0]^T \, \text{m}\)</span> in an Earth-centered inertial frame, and velocity <span class="arithmatex">\(\mathbf{v}_0 = [0, v_0, 0]^T = [0, 7.8 \times 10^3, 0]^T \, \text{m/s}\)</span>, corresponding to a tangential release (flight path angle <span class="arithmatex">\(\gamma = 0^\circ\)</span>) in the <span class="arithmatex">\(xy\)</span>-plane. The initial state vector is:</p>
 <div class="arithmatex">\[ \mathbf{y}_0 = [6,571 \times 10^3, 0, 0, 0, 7.8 \times 10^3, 0]^T. \]</div>
