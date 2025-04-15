@@ -91,6 +91,43 @@ where $\mu \approx 3.986 \times 10^{14} \, \text{m}^3 \text{s}^{-2}$ is Earth's 
 
 $$ \frac{d\mathbf{y}}{dt} = \begin{bmatrix} \mathbf{v} \\ -\frac{\mu}{r^3} \mathbf{r} \end{bmatrix}. $$
 
+
+### RK4 Method: General Example
+
+To illustrate the Runge-Kutta 4th-order (RK4) method used in trajectory propagation, we first demonstrate it on a simpler differential equation before applying it to the two-body problem. Consider the first-order ODE:
+
+$$ \frac{dy}{dt} = f(t, y) = y - t^2 + 1, \quad y(0) = 0.5, $$
+
+with a step size \( h = 0.2 \). We compute the next state \( y_1 \) at \( t = 0.2 \).
+
+#### Step 1: Compute Intermediate Increments
+
+The RK4 method calculates four increments:
+
+$$ \begin{aligned}
+k_1 &= f(t_0, y_0) = f(0, 0.5) = 0.5 - 0^2 + 1 = 1.5, \\
+k_2 &= f\left(t_0 + \frac{h}{2}, y_0 + \frac{h}{2} k_1\right) = f(0.1, 0.5 + 0.1 \cdot 1.5) = f(0.1, 0.575) \\
+    &= 0.575 - 0.1^2 + 1 = 0.575 - 0.01 + 1 = 1.565, \\
+k_3 &= f\left(t_0 + \frac{h}{2}, y_0 + \frac{h}{2} k_2\right) = f(0.1, 0.5 + 0.1 \cdot 1.565) = f(0.1, 0.57825) \\
+    &= 0.57825 - 0.01 + 1 = 1.56825, \\
+k_4 &= f(t_0 + h, y_0 + h \cdot k_3) = f(0.2, 0.5 + 0.2 \cdot 1.56825) = f(0.2, 0.81365) \\
+    &= 0.81365 - 0.04 + 1 = 1.77365.
+\end{aligned} $$
+
+#### Step 2: Update the State
+
+The next state is computed as:
+
+$$ \begin{aligned}
+y_1 &= y_0 + \frac{h}{6} (k_1 + 2 k_2 + 2 k_3 + k_4) \\
+    &= 0.5 + \frac{0.2}{6} (1.5 + 2 \cdot 1.565 + 2 \cdot 1.56825 + 1.77365) \\
+    &= 0.5 + \frac{0.2}{6} (1.5 + 3.13 + 3.1365 + 1.77365) \\
+    &= 0.5 + \frac{0.2}{6} \cdot 9.54015 \approx 0.5 + 0.318005 \\
+    &= 0.818.
+\end{aligned} $$
+
+Thus, \( y(0.2) \approx 0.818 \). This example clarifies the RK4 process, which we apply to the two-body problem in the following steps.
+
 ### Initial Conditions Setup
 Assume the payload is released at $t = 0$ with position $\mathbf{r}_0 = [r_0, 0, 0]^T = [6,571 \times 10^3, 0, 0]^T \, \text{m}$ in an Earth-centered inertial frame, and velocity $\mathbf{v}_0 = [0, v_0, 0]^T = [0, 7.8 \times 10^3, 0]^T \, \text{m/s}$, corresponding to a tangential release (flight path angle $\gamma = 0^\circ$) in the $xy$-plane. The initial state vector is:
 
