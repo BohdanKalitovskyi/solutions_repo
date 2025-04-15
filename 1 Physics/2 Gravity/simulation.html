@@ -65,20 +65,20 @@
         <canvas id="simulationCanvas"></canvas>
         <div class="controls">
             <label for="massCentralBody">Mass of Central Body (kg):</label>
-            <input type="range" id="massCentralBody" min="1e22" max="1e26" step="1e22" value="5.972e24">
-            <span id="massCentralBodyValue">5.972e24 kg</span><br>
+            <input type="range" id="massCentralBody" min="1e22" max="1e26" step="1e22" value="1e24">
+            <span id="massCentralBodyValue">1e24 kg</span><br>
 
             <label for="massOrbitingBody">Mass of Orbiting Body (kg):</label>
-            <input type="range" id="massOrbitingBody" min="1e3" max="1e8" step="1e3" value="1e6">
-            <span id="massOrbitingBodyValue">1e6 kg</span><br>
+            <input type="range" id="massOrbitingBody" min="1e18" max="1e24" step="1e18" value="1e20">
+            <span id="massOrbitingBodyValue">1e20 kg</span><br>
 
             <label for="initialVelocity">Initial Velocity (m/s):</label>
             <input type="range" id="initialVelocity" min="1000" max="15000" step="100" value="7000">
             <span id="initialVelocityValue">7000 m/s</span><br>
 
             <label for="altitude">Initial Altitude Above Surface (km):</label>
-            <input type="range" id="altitude" min="100" max="2000" step="100" value="400">
-            <span id="altitudeValue">400 km</span><br>
+            <input type="range" id="altitude" min="100" max="5000" step="100" value="1000">
+            <span id="altitudeValue">1000 km</span><br>
         </div>
     </div>
 
@@ -95,10 +95,10 @@
             canvas.height = CANVAS_HEIGHT;
 
             // Initial parameters
-            let massCentralBody = 5.972e24; // Mass of Earth in kg
-            let massOrbitingBody = 1e6; // Mass of satellite in kg
+            let massCentralBody = 1e24; // Mass of central body in kg
+            let massOrbitingBody = 1e20; // Mass of orbiting body in kg
             let initialVelocity = 7000; // Initial velocity in m/s
-            let altitude = 400e3; // Initial altitude in meters
+            let altitude = 1000e3; // Initial altitude in meters
 
             // Constants
             const G = 6.67430e-11; // Gravitational constant (m^3 kg^-1 s^-2)
@@ -155,9 +155,9 @@
             function drawEarth() {
                 ctx.beginPath();
                 ctx.arc(
-                    CANVAS_WIDTH / 3, // Center the Earth at one-third of the width
+                    CANVAS_WIDTH * 0.7, // Place Earth at 70% of the width
                     CANVAS_HEIGHT / 2,
-                    R_Earth * (CANVAS_WIDTH / (6 * R_Earth)), // Scale Earth to one-third of the width
+                    R_Earth * (CANVAS_WIDTH / (12 * R_Earth)), // Scale Earth to be smaller
                     0,
                     2 * Math.PI
                 );
@@ -169,8 +169,8 @@
             function drawOrbitingBody(x, y) {
                 ctx.beginPath();
                 ctx.arc(
-                    CANVAS_WIDTH / 3 + x * (CANVAS_WIDTH / (6 * R_Earth)),
-                    CANVAS_HEIGHT / 2 + y * (CANVAS_HEIGHT / (6 * R_Earth)),
+                    CANVAS_WIDTH * 0.7 + x * (CANVAS_WIDTH / (12 * R_Earth)),
+                    CANVAS_HEIGHT / 2 + y * (CANVAS_HEIGHT / (12 * R_Earth)),
                     5,
                     0,
                     2 * Math.PI
@@ -188,13 +188,13 @@
                     const [tx, ty] = trail[i];
                     if (i === 0) {
                         ctx.moveTo(
-                            CANVAS_WIDTH / 3 + tx * (CANVAS_WIDTH / (6 * R_Earth)),
-                            CANVAS_HEIGHT / 2 + ty * (CANVAS_HEIGHT / (6 * R_Earth))
+                            CANVAS_WIDTH * 0.7 + tx * (CANVAS_WIDTH / (12 * R_Earth)),
+                            CANVAS_HEIGHT / 2 + ty * (CANVAS_HEIGHT / (12 * R_Earth))
                         );
                     } else {
                         ctx.lineTo(
-                            CANVAS_WIDTH / 3 + tx * (CANVAS_WIDTH / (6 * R_Earth)),
-                            CANVAS_HEIGHT / 2 + ty * (CANVAS_HEIGHT / (6 * R_Earth))
+                            CANVAS_WIDTH * 0.7 + tx * (CANVAS_WIDTH / (12 * R_Earth)),
+                            CANVAS_HEIGHT / 2 + ty * (CANVAS_HEIGHT / (12 * R_Earth))
                         );
                     }
                 }
@@ -205,8 +205,9 @@
             function update() {
                 // Calculate acceleration
                 const r = Math.sqrt(x * x + y * y);
-                const ax = -G * massCentralBody * x / Math.pow(r, 3);
-                const ay = -G * massCentralBody * y / Math.pow(r, 3);
+                const totalMass = massCentralBody + massOrbitingBody; // Include mass of orbiting body
+                const ax = -G * totalMass * x / Math.pow(r, 3);
+                const ay = -G * totalMass * y / Math.pow(r, 3);
 
                 // Update velocity
                 vx += ax * dt;
