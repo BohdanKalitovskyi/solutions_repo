@@ -1,5 +1,8 @@
 # Problem 3
 
+## Orbital Mechanics Simulator
+[Orbital Mechanics Simulator](simulation.html)
+
 # Theoretical Analysis of Payload Trajectories Near Earth
 
 This section outlines the theoretical framework for analyzing payload trajectories near Earth, using Newton's Law of Gravitation, Kepler's Laws, and energy considerations. We assume a two-body problem with Earth as the dominant gravitational influence, neglecting atmospheric drag and other perturbations.
