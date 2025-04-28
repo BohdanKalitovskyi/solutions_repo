@@ -577,7 +577,7 @@ HTML(ani.to_jshtml())
 
 ## Thirty sources
 
-![alt text](thirty_source_interference.gif)
+
 
 ```python
 import numpy as np
