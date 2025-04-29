@@ -172,6 +172,328 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
+<h1 id="applications-of-the-lorentz-force">Applications of the Lorentz Force</h1>
+<h2 id="1-exploration-of-applications">1. Exploration of Applications</h2>
+<p>The <strong>Lorentz force</strong>, given by<br/>
+$$
+\vec{F} = q(\vec{E} + \vec{v} \times \vec{B}),
+$$<br/>
+describes the total force on a charged particle of charge <span class="arithmatex">\(q\)</span>, moving with velocity <span class="arithmatex">\(\vec{v}\)</span> in the presence of electric <span class="arithmatex">\(\vec{E}\)</span> and magnetic <span class="arithmatex">\(\vec{B}\)</span> fields.</p>
+<h3 id="particle-accelerators">Particle Accelerators</h3>
+<p>In <strong>linear accelerators</strong> (linacs) and <strong>cyclotrons</strong>, electric fields are used to accelerate particles, while magnetic fields control their trajectories.</p>
+<ul>
+<li>For particles moving perpendicular to a uniform magnetic field:<br/>
+  $$ 
+  F = qvB \Rightarrow \frac{mv^2}{r} = qvB \Rightarrow r = \frac{mv}{qB}
+  $$</li>
+<li>Radius of curvature <span class="arithmatex">\(r\)</span> increases with velocity <span class="arithmatex">\(v\)</span>, thus magnetic fields provide <strong>velocity-dependent steering</strong>.</li>
+</ul>
+<h3 id="mass-spectrometers">Mass Spectrometers</h3>
+<p><strong>Mass spectrometry</strong> relies on separating ions by their mass-to-charge ratio <span class="arithmatex">\(\frac{m}{q}\)</span> using the Lorentz force.</p>
+<ul>
+<li>Charged ions entering a region with <span class="arithmatex">\(\vec{E} = 0\)</span> and uniform <span class="arithmatex">\(\vec{B}\)</span> field perpendicular to velocity:<br/>
+  $$ 
+  r = \frac{mv}{qB}
+  $$</li>
+<li>With kinetic energy imparted by a known potential <span class="arithmatex">\(V\)</span>:<br/>
+  $$
+  \frac{1}{2}mv^2 = qV \Rightarrow v = \sqrt{\frac{2qV}{m}} \Rightarrow r = \frac{\sqrt{2mV}}{qB}
+  $$</li>
+<li>Measured radius <span class="arithmatex">\(r\)</span> allows determination of <span class="arithmatex">\(m/q\)</span>:
+  $$
+  \frac{m}{q} = \frac{r^2 B^2}{2V}
+  $$</li>
+</ul>
+<h3 id="plasma-confinement">Plasma Confinement</h3>
+<p>In <strong>tokamaks</strong> and <strong>stellarators</strong>, magnetic fields are crucial for confining high-energy plasma.</p>
+<ul>
+<li>In the absence of electric field, charged particles exhibit <strong>helical motion</strong> around magnetic field lines:
+  $$
+  \text{Gyrofrequency: } \omega_c = \frac{qB}{m}, \quad \text{Larmor radius: } r_L = \frac{mv_\perp}{qB}
+  $$</li>
+<li>
+<p>The Lorentz force prevents charged particles from escaping perpendicularly, while <strong>toroidal magnetic fields</strong> maintain containment.</p>
+</li>
+<li>
+<p><strong>E×B drift</strong> occurs when both <span class="arithmatex">\(\vec{E}\)</span> and <span class="arithmatex">\(\vec{B}\)</span> are present:
+  $$
+  \vec{v}_{E \times B} = \frac{\vec{E} \times \vec{B}}{B^2}
+  $$
+  This drift is <strong>independent of charge and mass</strong>.</p>
+</li>
+<li>
+<p><strong>Magnetic mirrors</strong> exploit varying <span class="arithmatex">\(B\)</span> field strengths:
+  $$
+  \mu = \frac{mv_\perp^2}{2B} = \text{constant} \Rightarrow \text{confinement via reflection at high } B
+  $$</p>
+</li>
+</ul>
+<h2 id="role-of-fields-in-charged-particle-motion">Role of Fields in Charged Particle Motion</h2>
+<ul>
+<li><strong>Electric fields</strong> do work on particles:<br/>
+  $$
+  \vec{F}_E = q\vec{E}, \quad W = qEd
+  $$</li>
+<li><strong>Magnetic fields</strong> alter direction, not speed:<br/>
+  $$
+  \vec{F}_B = q\vec{v} \times \vec{B}, \quad \vec{v} \cdot \vec{F}_B = 0
+  $$</li>
+<li><strong>Combined fields</strong> produce complex motion:</li>
+<li>Spiral/helical paths</li>
+<li>Cyclotron resonance when <span class="arithmatex">\(\omega = \omega_c\)</span></li>
+<li>Cross-field drifts critical in fusion and space physics</li>
+</ul>
+<hr/>
+<h2 id="2-parameter-exploration">2. Parameter Exploration</h2>
+<p>Analyzing the effects of varying physical parameters in the Lorentz force<br/>
+$$
+\vec{F} = q(\vec{E} + \vec{v} \times \vec{B})
+$$<br/>
+provides insights into charged particle dynamics under controlled experimental or simulated conditions.</p>
+<h3 id="electric-and-magnetic-field-strengths-vece-vecb">Electric and Magnetic Field Strengths <span class="arithmatex">\((\vec{E}, \vec{B})\)</span></h3>
+<ul>
+<li><strong>Electric Field <span class="arithmatex">\(\vec{E}\)</span></strong>:<br/>
+  Alters particle <strong>kinetic energy</strong> directly:
+  $$
+  \vec{F}_E = q\vec{E}, \quad a = \frac{q\vec{E}}{m}, \quad \Delta v = \frac{q\vec{E}}{m} \Delta t
+  $$</li>
+<li>Linear acceleration for uniform <span class="arithmatex">\(\vec{E}\)</span></li>
+<li>
+<p>Direction depends on the sign of <span class="arithmatex">\(q\)</span></p>
+</li>
+<li>
+<p><strong>Magnetic Field <span class="arithmatex">\(\vec{B}\)</span></strong>:<br/>
+  Influences <strong>trajectory curvature</strong>, not speed:
+  $$
+  \vec{F}<em>B = q\vec{v} \times \vec{B}, \quad r = \frac{mv</em>\perp}{qB}, \quad \omega_c = \frac{qB}{m}
+  $$</p>
+</li>
+<li>Stronger <span class="arithmatex">\(B\)</span> <span class="arithmatex">\(\Rightarrow\)</span> tighter curvature</li>
+<li>Direction follows right-hand rule (positive <span class="arithmatex">\(q\)</span>)</li>
+</ul>
+<h3 id="initial-particle-velocity-vecv">Initial Particle Velocity <span class="arithmatex">\(\vec{v}\)</span></h3>
+<ul>
+<li>Magnitude of <span class="arithmatex">\(\vec{v}\)</span> affects both electric and magnetic interactions:
+  $$
+  |\vec{F}_B| = qvB \sin\theta
+  $$</li>
+<li><span class="arithmatex">\(\theta = 90^\circ\)</span> maximizes magnetic force</li>
+<li>
+<p>For <span class="arithmatex">\(\vec{v} \parallel \vec{B}\)</span>, no magnetic deflection occurs</p>
+</li>
+<li>
+<p>Particle speed <span class="arithmatex">\(v\)</span> determines:</p>
+</li>
+<li>Radius of curvature <span class="arithmatex">\(r\)</span></li>
+<li>Helical pitch in combined <span class="arithmatex">\(\vec{E}\)</span> and <span class="arithmatex">\(\vec{B}\)</span> fields</li>
+<li>Energy gained via <span class="arithmatex">\(\vec{E}\)</span>: <span class="arithmatex">\(K = \frac{1}{2}mv^2\)</span></li>
+</ul>
+<h3 id="particle-charge-and-mass-q-m">Particle Charge and Mass <span class="arithmatex">\((q, m)\)</span></h3>
+<ul>
+<li><strong>Charge <span class="arithmatex">\(q\)</span></strong>:</li>
+<li>Sign affects force direction: <span class="arithmatex">\(\vec{F} \propto q\)</span></li>
+<li>
+<p>Magnitude scales force linearly:
+    $$
+    \vec{F} \propto q, \quad r \propto \frac{1}{q}
+    $$</p>
+</li>
+<li>
+<p><strong>Mass <span class="arithmatex">\(m\)</span></strong>:</p>
+</li>
+<li>Influences inertia, acceleration response:
+    $$
+    a = \frac{F}{m}, \quad r \propto m, \quad \omega_c \propto \frac{1}{m}
+    $$</li>
+</ul>
+<h3 id="trajectory-response-to-parameter-changes">Trajectory Response to Parameter Changes</h3>
+<h4 id="case-studies">Case Studies:</h4>
+<ol>
+<li>
+<p><strong>Increase <span class="arithmatex">\(E\)</span></strong>:<br/>
+   → Faster acceleration along field lines, linear velocity growth.</p>
+</li>
+<li>
+<p><strong>Increase <span class="arithmatex">\(B\)</span></strong>:<br/>
+   → Decreased gyro-radius <span class="arithmatex">\(r\)</span>, increased cyclotron frequency <span class="arithmatex">\(\omega_c\)</span>.</p>
+</li>
+<li>
+<p><strong>Increase <span class="arithmatex">\(v_\perp\)</span></strong>:<br/>
+   → Larger <span class="arithmatex">\(r\)</span>, wider spiral.</p>
+</li>
+<li>
+<p><strong>Switch sign of <span class="arithmatex">\(q\)</span></strong>:<br/>
+   → Force vector reverses; trajectory curves in opposite direction.</p>
+</li>
+<li>
+<p><strong>Increase <span class="arithmatex">\(m\)</span></strong>:<br/>
+   → Slower acceleration, wider spiral path due to increased inertia.</p>
+</li>
+</ol>
+<h4 id="tracking-motion">Tracking Motion</h4>
+<p>Use numerical methods (e.g., Runge-Kutta) to integrate:
+$$
+\frac{d\vec{v}}{dt} = \frac{q}{m}(\vec{E} + \vec{v} \times \vec{B})
+$$
+and<br/>
+$$
+\frac{d\vec{r}}{dt} = \vec{v}
+$$</p>
+<p>Trajectory sensitivity analysis is vital in:
+- Plasma control
+- Ion-beam focusing
+- Spacecraft propulsion simulations</p>
+<hr/>
+<h2 id="code-and-plots">Code and Plots</h2>
+<h2 id="website-with-simulation">Website with simulation</h2>
+<p><a href="../simul.html">Simulation</a></p>
+<h3 id="uniform-magnetic-field-only-helical-motion">Uniform Magnetic Field Only (Helical Motion)</h3>
+<p><img alt="alt text" src="../image.png"/></p>
+<pre><code class="language-python"># Case (a): Uniform Magnetic Field Only (Helical Motion)
+
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+# Lorentz force
+def lorentz_force(q, m, E, B, v):
+    return (q / m) * (E + np.cross(v, B))
+
+# Euler method
+def simulate_particle(q, m, E, B, v0, r0, dt, steps):
+    v = np.array(v0, dtype=float)
+    r = np.array(r0, dtype=float)
+    positions = [r.copy()]
+
+    for _ in range(steps):
+        a = lorentz_force(q, m, E, B, v)
+        v += a * dt
+        r += v * dt
+        positions.append(r.copy())
+
+    return np.array(positions)
+
+# 3D plot
+def plot_3d(positions, title='3D Trajectory'):
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+    ax.plot(positions[:,0], positions[:,1], positions[:,2])
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    ax.set_zlabel('z')
+    ax.set_title(title)
+    plt.show()
+
+# Parameters
+q = 1.0
+m = 1.0
+B = np.array([0, 0, 1])
+E = np.array([0, 0, 0])
+v0 = [1, 0, 1]
+r0 = [0, 0, 0]
+dt = 0.01
+steps = 1000
+
+# Run simulation
+positions = simulate_particle(q, m, E, B, v0, r0, dt, steps)
+plot_3d(positions, title='Uniform Magnetic Field (Helical Motion)')
+
+</code></pre>
+<h3 id="aligned-electric-and-magnetic-fields">Aligned Electric and Magnetic Fields</h3>
+<p><img alt="alt text" src="../image-1.png"/></p>
+<pre><code class="language-python"># Case (b): Aligned Electric and Magnetic Fields
+
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+def lorentz_force(q, m, E, B, v):
+    return (q / m) * (E + np.cross(v, B))
+
+def simulate_particle(q, m, E, B, v0, r0, dt, steps):
+    v = np.array(v0, dtype=float)
+    r = np.array(r0, dtype=float)
+    positions = [r.copy()]
+
+    for _ in range(steps):
+        a = lorentz_force(q, m, E, B, v)
+        v += a * dt
+        r += v * dt
+        positions.append(r.copy())
+
+    return np.array(positions)
+
+def plot_3d(positions, title='3D Trajectory'):
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+    ax.plot(positions[:,0], positions[:,1], positions[:,2])
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    ax.set_zlabel('z')
+    ax.set_title(title)
+    plt.show()
+
+q = 1.0
+m = 1.0
+B = np.array([0, 0, 1])
+E = np.array([0, 0, 1])
+v0 = [1, 0, 0]
+r0 = [0, 0, 0]
+dt = 0.01
+steps = 1000
+
+positions = simulate_particle(q, m, E, B, v0, r0, dt, steps)
+plot_3d(positions, title='Aligned Electric and Magnetic Fields')
+</code></pre>
+<h3 id="crossed-electric-and-magnetic-fields-e-b-drift">Crossed Electric and Magnetic Fields (E × B Drift)</h3>
+<p><img alt="alt text" src="../image-2.png"/></p>
+<pre><code class="language-python"># Case (c): Crossed Electric and Magnetic Fields (E × B Drift)
+
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+def lorentz_force(q, m, E, B, v):
+    return (q / m) * (E + np.cross(v, B))
+
+def simulate_particle(q, m, E, B, v0, r0, dt, steps):
+    v = np.array(v0, dtype=float)
+    r = np.array(r0, dtype=float)
+    positions = [r.copy()]
+
+    for _ in range(steps):
+        a = lorentz_force(q, m, E, B, v)
+        v += a * dt
+        r += v * dt
+        positions.append(r.copy())
+
+    return np.array(positions)
+
+def plot_3d(positions, title='3D Trajectory'):
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+    ax.plot(positions[:,0], positions[:,1], positions[:,2])
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    ax.set_zlabel('z')
+    ax.set_title(title)
+    plt.show()
+
+q = 1.0
+m = 1.0
+B = np.array([0, 0, 1])
+E = np.array([1, 0, 0])
+v0 = [0, 0, 0]
+r0 = [0, 0, 0]
+dt = 0.01
+steps = 1000
+
+positions = simulate_particle(q, m, E, B, v0, r0, dt, steps)
+plot_3d(positions, title='Crossed Electric and Magnetic Fields (E × B Drift)')
+
+</code></pre>
+<h1 id="colab">Colab</h1>
+<p><a href="https://colab.research.google.com/drive/1a8l_nseruSh4sStYkXMmiWwOdhGdp0rF#scrollTo=ukKI_Px9WgYP">Colab</a></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
