@@ -86,9 +86,7 @@ provides insights into charged particle dynamics under controlled experimental o
 
 - **Electric Field $\vec{E}$**:  
   Alters particle **kinetic energy** directly:
-  $$
-  \vec{F}_E = q\vec{E}, \quad a = \frac{q\vec{E}}{m}, \quad \Delta v = \frac{q\vec{E}}{m} \Delta t
-  $$
+  $$ \vec{F}_E = q\vec{E}, \quad a = \frac{q\vec{E}}{m}, \quad \Delta v = \frac{q\vec{E}}{m} \Delta t $$
   - Linear acceleration for uniform $\vec{E}$
   - Direction depends on the sign of $q$
 
