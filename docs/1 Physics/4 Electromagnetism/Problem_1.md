@@ -94,7 +94,7 @@ provides insights into charged particle dynamics under controlled experimental o
 
 - **Magnetic Field** $\vec{B}$:  
   Influences **trajectory curvature**, not speed:  
-  $$\vec{F}_B = q\vec{v} \times \vec{B}$, $r = \frac{mv_\perp}{qB}$, $\omega_c = \frac{qB}{m}$$  
+  $\vec{F}_B = q\vec{v} \times \vec{B}$, $r = \frac{mv_\perp}{qB}$, $\omega_c = \frac{qB}{m}$  
   - Stronger $B$ $\Rightarrow$ tighter curvature  
   - Direction follows right-hand rule (positive $q$)
 
