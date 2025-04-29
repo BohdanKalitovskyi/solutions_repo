@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Charged Particle Simulation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #f4f4f4;
+      text-align: center;
+    }
+    canvas {
+      border: 1px solid #333;
+      background: #fff;
+    }
+    select, input {
+      margin: 5px;
+      padding: 5px;
+    }
+    #controls {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Charged Particle Motion Simulator</h2>
+<div id="controls">
+  <label>Scenario:
+    <select id="scenario">
+      <option value="uniformB">Uniform Magnetic Field</option>
+      <option value="alignedEB">Aligned Electric & Magnetic Fields</option>
+      <option value="crossedEB">Crossed Electric & Magnetic Fields</option>
+    </select>
+  </label>
+  <br>
+  <label>Charge (q): <input type="number" id="q" value="1" step="0.1"></label>
+  <label>Mass (m): <input type="number" id="m" value="1" step="0.1"></label>
+  <br>
+  <label>Initial Velocity X: <input type="number" id="v0x" value="1" step="0.1"></label>
+  <label>Initial Velocity Y: <input type="number" id="v0y" value="0" step="0.1"></label>
+  <br>
+  <button onclick="startSimulation()">Start</button>
+</div>
+
+<canvas id="canvas" width="600" height="600"></canvas>
+
+<script>
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+let pos, vel, trail, q, m, B, E;
+const dt = 0.02;
+
+function cross(v, B) {
+  return [v[1]*B[2] - 0, -v[0]*B[2] + 0];
+}
+
+function simulateStep() {
+  const v = vel;
+  const Eforce = [q * E[0], q * E[1]];
+  const Bforce = cross(v, B).map(f => q * f);
+  const F = [Eforce[0] + Bforce[0], Eforce[1] + Bforce[1]];
+  const a = [F[0] / m, F[1] / m];
+  vel[0] += a[0] * dt;
+  vel[1] += a[1] * dt;
+  pos[0] += vel[0] * dt;
+  pos[1] += vel[1] * dt;
+  trail.push([...pos]);
+  if (trail.length > 1500) trail.shift();
+}
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.beginPath();
+  for (let i = 0; i < trail.length; i++) {
+    const [x, y] = trail[i];
+    ctx.lineTo(300 + x * 50, 300 - y * 50);
+  }
+  ctx.strokeStyle = "blue";
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(300 + pos[0]*50, 300 - pos[1]*50, 4, 0, 2 * Math.PI);
+  ctx.fillStyle = "red";
+  ctx.fill();
+}
+
+function loop() {
+  simulateStep();
+  draw();
+  requestAnimationFrame(loop);
+}
+
+function startSimulation() {
+  const scenario = document.getElementById("scenario").value;
+  q = parseFloat(document.getElementById("q").value);
+  m = parseFloat(document.getElementById("m").value);
+  const v0x = parseFloat(document.getElementById("v0x").value);
+  const v0y = parseFloat(document.getElementById("v0y").value);
+  vel = [v0x, v0y];
+  pos = [0, 0];
+  trail = [];
+
+  // Set E and B fields
+  if (scenario === "uniformB") {
+    E = [0, 0];          // No electric field
+    B = [0, 0, 1];       // Magnetic field along z
+  } else if (scenario === "alignedEB") {
+    E = [0, 1];          // Electric field in y
+    B = [0, 0, 1];       // Magnetic field in z
+  } else if (scenario === "crossedEB") {
+    E = [1, 0];          // Electric field in x
+    B = [0, 0, 1];       // Magnetic field in z
+  }
+
+  loop();
+}
+</script>
+</body>
+</html>
