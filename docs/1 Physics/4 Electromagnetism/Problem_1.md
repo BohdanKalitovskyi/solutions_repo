@@ -167,7 +167,7 @@ Trajectory sensitivity analysis is vital in:
 
 ## Code and Plots
 
-## Website with simulation
+### Website with simulation
 [Simulation](simul.html)
 
 ### Uniform Magnetic Field Only (Helical Motion)
