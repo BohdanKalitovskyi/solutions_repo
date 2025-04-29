@@ -172,6 +172,175 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-2">Problem 2</h1>
+<h1 id="estimating-theoretical-foundations">Estimating π: Theoretical Foundations</h1>
+<h2 id="part-1-estimating-using-a-circle-monte-carlo-method">Part 1: Estimating π Using a Circle (Monte Carlo Method)</h2>
+<h3 id="11-geometric-probability-concept">1.1 Geometric Probability Concept</h3>
+<p>To estimate π geometrically, we consider a unit circle inscribed in a square. The approach uses the idea of geometric probability — the probability of a random point falling inside the circle is proportional to the ratio of the circle's area to the square's area.</p>
+<ul>
+<li>Define a square of side length 2, centered at the origin: <span class="arithmatex">\(x, y \in [-1, 1]\)</span>.</li>
+<li>The inscribed circle has a radius <span class="arithmatex">\(r = 1\)</span> and is centered at the origin.</li>
+</ul>
+<p>The area of the square is:
+$$
+A_{\text{square}} = 2 \times 2 = 4
+$$</p>
+<p>The area of the circle is:
+$$
+A_{\text{circle}} = \pi r^2 = \pi \cdot 1^2 = \pi
+$$</p>
+<p>Thus, the probability <span class="arithmatex">\(P\)</span> that a randomly chosen point <span class="arithmatex">\((x, y)\)</span> falls inside the circle is:
+$$
+P = \frac{A_{\text{circle}}}{A_{\text{square}}} = \frac{\pi}{4}
+$$</p>
+<p>This leads to the approximation:
+$$
+\pi \approx 4 \cdot \frac{\text{Number of points inside circle}}{\text{Total number of points}}
+$$</p>
+<h3 id="12-estimation-logic">1.2 Estimation Logic</h3>
+<p>We simulate <span class="arithmatex">\(N\)</span> random points in the square. A point lies inside the circle if:
+$$
+x^2 + y^2 \leq 1
+$$</p>
+<p>Let <span class="arithmatex">\(M\)</span> be the number of points satisfying the condition above. Then:
+$$
+\pi \approx 4 \cdot \frac{M}{N}
+$$</p>
+<hr/>
+<h2 id="part-2-estimating-using-buffons-needle">Part 2: Estimating π Using Buffon’s Needle</h2>
+<h3 id="21-problem-description">2.1 Problem Description</h3>
+<p>Buffon’s Needle is a classic probabilistic experiment proposed by Georges-Louis Leclerc, Comte de Buffon, in the 18th century. It estimates π based on the probability of a needle crossing lines on a plane.</p>
+<h4 id="setup">Setup:</h4>
+<ul>
+<li>Draw parallel horizontal lines spaced <span class="arithmatex">\(d\)</span> units apart.</li>
+<li>Drop a needle of length <span class="arithmatex">\(l\)</span> (<span class="arithmatex">\(l \leq d\)</span>) onto the plane.</li>
+</ul>
+<p>Let:
+- <span class="arithmatex">\(\theta\)</span> be the acute angle between the needle and the lines: <span class="arithmatex">\(\theta \in [0, \pi]\)</span>
+- <span class="arithmatex">\(x\)</span> be the distance from the center of the needle to the nearest line: <span class="arithmatex">\(x \in [0, \frac{d}{2}]\)</span></p>
+<p>A crossing occurs if:
+$$
+x \leq \frac{l}{2} \sin \theta
+$$</p>
+<h3 id="22-derivation-of-the-formula">2.2 Derivation of the Formula</h3>
+<p>The probability <span class="arithmatex">\(P\)</span> of the needle crossing a line is:
+$$
+P = \frac{2l}{\pi d}
+$$</p>
+<p>Solving for <span class="arithmatex">\(\pi\)</span> gives:
+$$
+\pi \approx \frac{2l \cdot N}{d \cdot C}
+$$</p>
+<p>Where:
+- <span class="arithmatex">\(N\)</span> is the total number of throws
+- <span class="arithmatex">\(C\)</span> is the number of crossings</p>
+<h3 id="23-conditions-for-validity">2.3 Conditions for Validity</h3>
+<ul>
+<li><span class="arithmatex">\(l \leq d\)</span></li>
+<li>Random uniform distribution of both <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(\theta\)</span></li>
+<li>Sufficiently large number of trials for convergence</li>
+</ul>
+<hr/>
+<h2 id="code-and-plots">Code and Plots</h2>
+<h3 id="for-part-1-circle-based-estimation">For Part 1: Circle-Based Estimation</h3>
+<p><img alt="alt text" src="../image-1.png"/></p>
+<h4 id="estimated-3120800">Estimated π ≈ 3.120800</h4>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# Set number of random points
+N = 10000
+
+# Generate random points (x, y) in the square [-1, 1] x [-1, 1]
+x = np.random.uniform(-1, 1, N)
+y = np.random.uniform(-1, 1, N)
+
+# Determine whether each point is inside the unit circle
+inside_circle = x**2 + y**2 &lt;= 1
+
+# Estimate π
+pi_estimate = 4 * np.sum(inside_circle) / N
+print(f"Estimated π ≈ {pi_estimate:.6f}")
+
+# Plotting
+fig, ax = plt.subplots(figsize=(6, 6))
+ax.set_aspect('equal')
+ax.set_title(f'Monte Carlo Estimation of π with {N} Points')
+
+# Plot points
+ax.scatter(x[inside_circle], y[inside_circle], color='blue', s=1, label='Inside Circle')
+ax.scatter(x[~inside_circle], y[~inside_circle], color='red', s=1, label='Outside Circle')
+
+# Draw unit circle and square
+circle = plt.Circle((0, 0), 1, color='black', fill=False, linewidth=2, label='Unit Circle')
+ax.add_artist(circle)
+ax.set_xlim([-1, 1])
+ax.set_ylim([-1, 1])
+ax.legend()
+plt.grid(True)
+plt.show()
+
+</code></pre>
+<hr/>
+<h3 id="for-part-2-buffons-needle-estimation">For Part 2: Buffon’s Needle Estimation</h3>
+<p><img alt="alt text" src="../image-2.png"/></p>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# Simulation parameters
+needle_length = 0.9
+line_spacing = 1.0
+num_needles = 1000
+num_lines = 10
+
+# Generate random centers and angles for each needle
+x_center = np.random.uniform(0, num_lines * line_spacing, num_needles)
+theta = np.random.uniform(0, np.pi, num_needles)
+
+# Calculate the vertical projection from center to needle ends
+dy = (needle_length / 2) * np.sin(theta)
+
+# Determine which needles cross a line
+crosses_line = (x_center % line_spacing) &lt;= dy
+
+# Estimate π
+num_crossings = np.sum(crosses_line)
+if num_crossings &gt; 0:
+    pi_estimate = (2 * needle_length * num_needles) / (line_spacing * num_crossings)
+    print(f"Estimated π ≈ {pi_estimate:.6f}")
+else:
+    print("No crossings occurred. Try increasing the number of needles.")
+
+# Plotting
+fig, ax = plt.subplots(figsize=(10, 6))
+ax.set_title(f"Buffon’s Needle Simulation: {num_needles} Needles")
+ax.set_xlim(0, num_lines * line_spacing)
+ax.set_ylim(0, needle_length * 1.5)
+
+# Draw parallel lines
+for i in range(num_lines + 1):
+    ax.axvline(i * line_spacing, color='gray', linestyle='--', linewidth=1)
+
+# Plot needles
+for i in range(num_needles):
+    x0 = x_center[i]
+    y0 = 0.5
+    dx = (needle_length / 2) * np.cos(theta[i])
+    dy = (needle_length / 2) * np.sin(theta[i])
+    color = 'green' if crosses_line[i] else 'orange'
+    ax.plot([x0 - dx, x0 + dx], [y0 - dy, y0 + dy], color=color, alpha=0.7)
+
+ax.set_aspect('equal')
+ax.set_yticks([])
+ax.set_xlabel('Position along floor')
+plt.legend(handles=[
+    plt.Line2D([0], [0], color='green', lw=2, label='Crosses Line'),
+    plt.Line2D([0], [0], color='orange', lw=2, label='Does Not Cross')
+])
+plt.grid(True)
+plt.show()
+</code></pre>
+<h1 id="colab">Colab</h1>
+<p><a href="https://colab.research.google.com/drive/18_HYcI-srm95C2dQ0X7dBWglupLPsHEt">Colab</a></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
