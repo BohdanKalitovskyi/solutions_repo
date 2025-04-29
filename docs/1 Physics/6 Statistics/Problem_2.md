@@ -140,6 +140,8 @@ plt.show()
 
 ![alt text](image-3.png)
 
+#### Estimated π ≈ 3.143561
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
