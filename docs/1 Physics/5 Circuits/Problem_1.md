@@ -1,3 +1,5 @@
+# Problem 1
+
 # Equivalent Resistance via Graph Theory
 
 ## 1. Problem Overview
