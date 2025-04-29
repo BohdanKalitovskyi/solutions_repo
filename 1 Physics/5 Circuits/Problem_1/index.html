@@ -6,13 +6,13 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Problem 1 - Physics and Mathematics</title>
+<title>Equivalent Resistance via Graph Theory - Physics and Mathematics</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Problem 1";
+        var mkdocs_page_name = "Equivalent Resistance via Graph Theory";
         var mkdocs_page_input_path = "1 Physics/5 Circuits/Problem_1.md";
         var mkdocs_page_url = null;
       </script>
@@ -76,8 +76,50 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal current">5 Circuits</a>
 <ul class="current">
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">Equivalent Resistance via Graph Theory</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#1-problem-overview">1. Problem Overview</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#2-graph-theoretic-representation-of-circuits">2. Graph-Theoretic Representation of Circuits</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#3-series-and-parallel-simplification">3. Series and Parallel Simplification</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#series-resistance">Series Resistance</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#parallel-resistance">Parallel Resistance</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#4-nested-and-complex-structures">4. Nested and Complex Structures</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#5-algorithmic-strategy">5. Algorithmic Strategy</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#6-mathematical-tools">6. Mathematical Tools</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#7-special-cases">7. Special Cases</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#single-resistor">Single Resistor</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#empty-graph">Empty Graph</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#disconnected-graph">Disconnected Graph</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#8-theoretical-limitations">8. Theoretical Limitations</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#plots">Plots</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#simple-series-circuit">Simple Series Circuit</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#simple-parallel-circuit">Simple Parallel Circuit</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#nested-series-parallel-circuit">Nested Series-Parallel Circuit</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#complex-network-eg-wheatstone-bridge">Complex Network (e.g., Wheatstone Bridge)</a>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -163,7 +205,7 @@
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">1 Physics</li>
 <li class="breadcrumb-item">5 Circuits</li>
-<li class="breadcrumb-item active">Problem 1</li>
+<li class="breadcrumb-item active">Equivalent Resistance via Graph Theory</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -171,343 +213,97 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="problem-1">Problem 1</h1>
-<h1 id="i-problem-understanding-and-modeling">I. Problem Understanding and Modeling</h1>
-<h2 id="1-circuit-representation">1. Circuit Representation</h2>
-<p><strong>Definition 1.1 (Weighted Undirected Graph).</strong><br/>
-A circuit is modeled by a weighted undirected graph<br/>
-$$
-G = (V, E, w),
-$$<br/>
-where<br/>
-- <span class="arithmatex">\(V = \{v_1, v_2, \dots, v_n\}\)</span> is the set of <strong>nodes</strong> (junctions);<br/>
-- <span class="arithmatex">\(E \subseteq \{\{v_i, v_j\} : v_i \neq v_j\}\)</span> is the set of <strong>edges</strong> (resistors);<br/>
-- <span class="arithmatex">\(w: E \to \mathbb{R}^+\)</span> assigns each edge <span class="arithmatex">\(\{v_i,v_j\}\)</span> a resistance <span class="arithmatex">\(r_{ij} = w(\{v_i,v_j\})\)</span>.</p>
-<p><strong>Adjacency Matrix <span class="arithmatex">\(A\)</span>.</strong><br/>
-$$
-A_{ij} =
-\begin{cases}
-r_{ij}, &amp; {v_i, v_j} \in E,\
-0, &amp; \text{otherwise},
-\end{cases}
-\quad
-A \in \mathbb{R}^{n \times n},\ 
-A_{ij}=A_{ji},\ 
-A_{ii}=0.
-$$</p>
-<p><strong>Degree Matrix <span class="arithmatex">\(D\)</span> and Laplacian <span class="arithmatex">\(L\)</span>.</strong><br/>
-Let
-$$
-D = \mathrm{diag}(d_1,\dots,d_n), 
-\quad
-d_i = \sum_{j=1}^n A_{ij}.
-$$<br/>
-Then the <strong>graph Laplacian</strong> is<br/>
-$$
-L = D - A.
-$$<br/>
-Connectivity is equivalent to the algebraic connectivity satisfying<br/>
-$$
-\lambda_2(L) &gt; 0.
-$$</p>
-<p><strong>Incidence Matrix <span class="arithmatex">\(B\)</span>.</strong><br/>
-For <span class="arithmatex">\(m=|E|\)</span>, define <span class="arithmatex">\(B\in\{-1,0,1\}^{n\times m}\)</span> by arbitrarily orienting each edge <span class="arithmatex">\(e_k=\{v_i,v_j\}\)</span>:
-$$
-B_{ik} =
-\begin{cases}
-1, &amp; \text{if } e_k \text{ is oriented } v_i\to v_j,\
--1, &amp; \text{if } e_k \text{ is oriented } v_j\to v_i,\
-0, &amp; \text{otherwise}.
-\end{cases}
-$$</p>
-<h2 id="2-input-specification">2. Input Specification</h2>
-<p>We adopt one of the following formats:</p>
-<ol>
-<li>
-<p><strong>Adjacency List.</strong><br/>
-   A function <span class="arithmatex">\(L: V \to 2^{V\times\mathbb{R}^+}\)</span> where<br/>
-   $$
-   L(v_i) = {(v_j, r_{ij}) : {v_i,v_j} \in E}.
-   $$<br/>
-<em>Example:</em><br/>
-   $$
-   L(v_1) = {(v_2, R_{12}),\,(v_3, R_{13})}.
-   $$</p>
-</li>
-<li>
-<p><strong>Adjacency Matrix.</strong><br/>
-   Directly input the symmetric matrix <span class="arithmatex">\(A\)</span> as above:<br/>
-   $$
-   A =
-   \begin{pmatrix}
-   0 &amp; R_{12} &amp; \cdots &amp; R_{1n}\
-   R_{21} &amp; 0 &amp; \cdots &amp; R_{2n}\
-   \vdots &amp; \vdots &amp; \ddots &amp; \vdots\
-   R_{n1} &amp; R_{n2} &amp; \cdots &amp; 0
-   \end{pmatrix}.
-   $$</p>
-</li>
-<li>
-<p><strong>Edge List.</strong><br/>
-   A sequence of triples<br/>
-   $$
-   E = {(v_{u_k}, v_{v_k}, r_k)}_{k=1}^m,
-   $$<br/>
-   representing each resistor by its endpoints and resistance.</p>
-</li>
-</ol>
-<p>Each format ensures explicit storage of every resistor’s endpoints and resistance value.</p>
-<h2 id="3-assumptions-and-constraints">3. Assumptions and Constraints</h2>
-<ol>
-<li>
-<p><strong>Purely Resistive Network.</strong><br/>
-   All components obey Ohm’s law:<br/>
-<span class="arithmatex">\(<span class="arithmatex">\(V = IR.\)</span>\)</span></p>
-</li>
-<li>
-<p><strong>Undirected Graph.</strong><br/>
-   Symmetry of resistance:<br/>
-   $$
-   w({v_i,v_j}) = w({v_j,v_i}),\quad
-   \forall\,{v_i,v_j}\in E.
-   $$</p>
-</li>
-<li>
-<p><strong>Connectivity Between Source and Sink.</strong><br/>
-   The graph is connected:<br/>
-   $$
-   \forall\,u,v\in V,\;\exists\;\text{path }P_{u\to v}.
-   $$<br/>
-   In particular, the designated source <span class="arithmatex">\(s\)</span> and sink <span class="arithmatex">\(t\)</span> must lie in the same connected component.</p>
-</li>
-</ol>
-<h1 id="ii-algorithm-design">II. Algorithm Design</h1>
-<h2 id="1-simplification-strategy">1. Simplification Strategy</h2>
-<p><strong>Series Reduction.</strong><br/>
-Identify a path <span class="arithmatex">\(P = (v_0, v_1, \dots, v_k)\)</span> such that each internal node <span class="arithmatex">\(v_i\)</span> has degree <span class="arithmatex">\(2\)</span>, and edges <span class="arithmatex">\(e_i = \{v_{i-1},v_i\}\)</span> with resistances <span class="arithmatex">\(r_i\)</span>. Replace <span class="arithmatex">\(P\)</span> by a single edge <span class="arithmatex">\(\{v_0,v_k\}\)</span> with equivalent resistance<br/>
-$$
-R_{\mathrm{series}}
-= \sum_{i=1}^k r_i.
-$$</p>
-<p><strong>Parallel Reduction.</strong><br/>
-Identify all edges <span class="arithmatex">\(\{e_i\}_{i=1}^p\)</span> connecting the same node pair <span class="arithmatex">\(\{u,v\}\)</span> with resistances <span class="arithmatex">\(r_i\)</span>. Replace by a single edge <span class="arithmatex">\(\{u,v\}\)</span> with<br/>
-$$
-\frac{1}{R_{\mathrm{parallel}}}
-= \sum_{i=1}^p \frac{1}{r_i}
-\quad\Longrightarrow\quad
-R_{\mathrm{parallel}}
-= \Bigl(\sum_{i=1}^p \tfrac{1}{r_i}\Bigr)^{-1}.
-$$</p>
-<h2 id="2-graph-traversal-and-pattern-detection">2. Graph Traversal and Pattern Detection</h2>
-<h3 id="21-depth-first-search-dfs">2.1 Depth-First Search (DFS)</h3>
-<p>Use DFS to explore and flag nodes of degree 2 for series-chain detection.  </p>
-<pre><code class="language-pseudo">procedure DFS(u):
-  visited[u] ← true
-  for each neighbor v of u do
-    if not visited[v] then
-      DFS(v)
-    end if
-  end for
-end procedure
-</code></pre>
-<h3 id="22-breadth-first-search-bfs">2.2 Breadth-First Search (BFS)</h3>
-<p>Use BFS for level-order scans to locate chains iteratively.  </p>
-<pre><code class="language-pseudo">procedure BFS(s):
-  queue ← [s]
-  visited[s] ← true
-  while queue not empty do
-    u ← dequeue(queue)
-    for each neighbor v of u do
-      if not visited[v] then
-        visited[v] ← true
-        enqueue(queue, v)
-      end if
-    end for
-  end while
-end procedure
-</code></pre>
-<h3 id="23-parallel-edge-detection">2.3 Parallel-Edge Detection</h3>
-<p>For each node pair <span class="arithmatex">\((u,v)\)</span>, gather edge set<br/>
-$$
-E_{uv} = {e : e\text{ connects }u\text{ and }v}.
-$$<br/>
-If <span class="arithmatex">\(|E_{uv}| &gt; 1\)</span>, apply parallel reduction.</p>
-<h2 id="3-termination-condition">3. Termination Condition</h2>
-<p>Iterate series and parallel reductions until the graph reduces to exactly two nodes <span class="arithmatex">\(\{s,t\}\)</span> and a single edge between them. The weight of this final edge is the equivalent resistance:<br/>
-$$
-G_{\mathrm{final}}:\ 
-V = {s,t},\ 
-E = {{s,t}},\ 
-R_{\mathrm{eq}} = w({s,t}).
-$$</p>
-<h1 id="iii-pseudocode-development">III. Pseudocode Development</h1>
-<h2 id="1-high-level-pseudocode">1. High-Level Pseudocode</h2>
-<pre><code class="language-plaintext">main():
-    inputData ← readInput()
-    G ← buildGraph(inputData)
-    simplifyGraph(G)
-    R_eq ← computeEquivalentResistance(G)
-    print("Equivalent Resistance:", R_eq)
-
-procedure buildGraph(inputData):
-    G ← new Graph()
-    for each (u, v, r) in inputData.edgeList do
-        if not G.containsNode(u) then G.addNode(u)
-        if not G.containsNode(v) then G.addNode(v)
-        G.addEdge(u, v, weight = r)
-    return G
-
-procedure simplifyGraph(G):
-    repeat
-        if seriesTriple ← findSeriesTriple(G) then
-            reduceSeries(G, seriesTriple)
-        else if parallelPair ← findParallelPair(G) then
-            reduceParallel(G, parallelPair)
-        else
-            break
-    until false
-
-procedure findSeriesTriple(G):
-    for each node v in G.nodes do
-        if v ≠ s and v ≠ t and G.degree(v) == 2 then
-            let [u, w] = G.neighbors(v)
-            let r1 = G.edgeWeight(u, v)
-            let r2 = G.edgeWeight(v, w)
-            return (u, v, w, r1, r2)
-    return null
-
-procedure reduceSeries(G, (u, v, w, r1, r2)):
-    R_series = r1 + r2
-    G.removeEdge(u, v)
-    G.removeEdge(v, w)
-    G.removeNode(v)
-    addOrCombineEdge(G, u, w, R_series)
-
-procedure findParallelPair(G):
-    for each unordered pair (u, v) in G.nodePairs do
-        edges = G.edgesBetween(u, v)
-        if edges.size &gt; 1 then
-            resistances = [G.edgeWeight(e) for e in edges]
-            return (u, v, resistances)
-    return null
-
-procedure reduceParallel(G, (u, v, resistances)):
-    R_parallel = (sum(1/r for r in resistances))⁻¹
-    for each e in G.edgesBetween(u, v) do G.removeEdge(e)
-    addOrCombineEdge(G, u, v, R_parallel)
-
-procedure addOrCombineEdge(G, u, v, R_new):
-    if G.hasEdge(u, v) then
-        r_old = G.edgeWeight(u, v)
-        R_combined = (1/r_old + 1/R_new)⁻¹
-        G.updateEdgeWeight(u, v, R_combined)
-    else
-        G.addEdge(u, v, weight = R_new)
-
-procedure computeEquivalentResistance(G):
-    // After simplification, only nodes s and t remain connected by one edge
-    return G.edgeWeight(s, t)
-</code></pre>
+<h1 id="equivalent-resistance-via-graph-theory">Equivalent Resistance via Graph Theory</h1>
+<h2 id="1-problem-overview">1. Problem Overview</h2>
+<p>Analyzing electrical circuits using <strong>graph theory</strong> transforms a physical system into a mathematical model. In this approach, <strong>nodes</strong> represent circuit junctions, and <strong>edges</strong> represent resistors with associated weights (resistance values).</p>
+<p>The central objective is to calculate the <strong>equivalent resistance</strong> <span class="arithmatex">\(R_{\text{eq}}\)</span> between two designated terminals by systematically simplifying the graph.</p>
 <hr/>
-<h1 id="vi-analysis-of-algorithm-efficiency">VI. Analysis of Algorithm Efficiency</h1>
-<h2 id="1-time-and-space-complexity">1. Time and Space Complexity</h2>
-<p>Let <span class="arithmatex">\(n = |V|\)</span> be the number of nodes and <span class="arithmatex">\(m = |E|\)</span> the number of edges in the circuit graph.</p>
-<ol>
-<li><strong>Series Reduction Search</strong> </li>
-<li>Each call to <code>findSeriesTriple</code> scans all nodes and inspects degrees and neighbors in <span class="arithmatex">\(O(n + m)\)</span>.  </li>
-<li>In the worst case, up to <span class="arithmatex">\(n-2\)</span> series reductions occur (removing one internal node each time).  </li>
-<li>
-<p>Total cost for series detection and reduction:<br/>
-     $$
-     \sum_{k=1}^{n-2} O(n_k + m_k)
-     \;\approx\; O\bigl((n + m)\,n\bigr)
-     = O(n^2 + nm).
-     $$</p>
-</li>
-<li>
-<p><strong>Parallel Reduction Search</strong> </p>
-</li>
-<li>Each call to <code>findParallelPair</code> may examine each edge or each unordered node‐pair.  <ul>
-<li>Edge‐based approach: grouping edges by endpoint pair can be done in <span class="arithmatex">\(O(m\log m)\)</span> (via sorting or hashing).  </li>
+<h2 id="2-graph-theoretic-representation-of-circuits">2. Graph-Theoretic Representation of Circuits</h2>
+<p>A resistive electrical network can be modeled as an undirected, weighted graph <span class="arithmatex">\(G = (V, E)\)</span> where:</p>
+<ul>
+<li><span class="arithmatex">\(V\)</span> is the set of <strong>vertices</strong> (nodes/junctions).</li>
+<li><span class="arithmatex">\(E\)</span> is the set of <strong>edges</strong> (resistors).</li>
+<li>Each edge <span class="arithmatex">\(e_{ij} \in E\)</span> connects nodes <span class="arithmatex">\(i\)</span> and <span class="arithmatex">\(j\)</span> with weight <span class="arithmatex">\(w_{ij} = R_{ij}\)</span>, the resistance.</li>
 </ul>
-</li>
-<li>In the worst case, up to <span class="arithmatex">\(m-1\)</span> parallel reductions occur.  </li>
-<li>
-<p>Total cost for parallel detection and reduction:<br/>
-     $$
-     \sum_{k=1}^{m-1} O(m_k \log m_k)
-     \;\approx\; O(m^2 \log m).
-     $$</p>
-</li>
-<li>
-<p><strong>Combined Simplification Loop</strong> </p>
-</li>
-<li>In each iteration, we attempt a series or parallel reduction.  </li>
-<li>Worst‐case iterations <span class="arithmatex">\(\le n + m\)</span>.  </li>
-<li>
-<p>Overall worst‐case time complexity:<br/>
-     $$
-     O\bigl(n^2 + nm + m^2 \log m\bigr).
-     $$</p>
-</li>
-<li>
-<p><strong>Space Complexity</strong> </p>
-</li>
-<li>Storing the graph with adjacency lists:<br/>
-     $$
-     O(n + m).
-     $$  </li>
-<li>Auxiliary data (visited flags, degree arrays, hash maps):<br/>
-     $$
-     O(n + m).
-     $$  </li>
-<li>
-<p>Total space:<br/>
-     $$
-     O(n + m).
-     $$</p>
-</li>
-<li>
-<p><strong>Sparse vs. Dense Graphs</strong> </p>
-</li>
-<li><strong>Sparse</strong> (<span class="arithmatex">\(m = O(n)\)</span>):<br/>
-     $$ 
-     \text{Time} = O(n^2 + n^2 \log n) = O(n^2 \log n). 
-     $$  </li>
-<li><strong>Dense</strong> (<span class="arithmatex">\(m = O(n^2)\)</span>):<br/>
-     $$
-     \text{Time} = O(n^2 + n^3 + n^4 \log n) = O(n^4 \log n).
-     $$  </li>
-<li>In practice, most circuits are sparse, so performance is closer to <span class="arithmatex">\(O(n^2 \log n)\)</span>.</li>
-</ol>
-<h2 id="2-bottlenecks-identification">2. Bottlenecks Identification</h2>
+<p>Types of connections:</p>
+<ul>
+<li><strong>Series</strong>: Resistors along a unique path.</li>
+<li><strong>Parallel</strong>: Resistors sharing the same pair of nodes.</li>
+</ul>
+<hr/>
+<h2 id="3-series-and-parallel-simplification">3. Series and Parallel Simplification</h2>
+<h3 id="series-resistance">Series Resistance</h3>
+<p>If resistors <span class="arithmatex">\(R_1, R_2, \dots, R_n\)</span> are connected in series, the equivalent resistance is the sum:</p>
+<div class="arithmatex">\[
+R_{\text{eq}} = R_1 + R_2 + \dots + R_n = \sum_{k=1}^n R_k
+\]</div>
+<p>Graph-theoretically: a path of degree-2 nodes (excluding endpoints) can be collapsed into a single edge.</p>
+<h3 id="parallel-resistance">Parallel Resistance</h3>
+<p>If resistors <span class="arithmatex">\(R_1, R_2, \dots, R_n\)</span> are connected in parallel between two nodes:</p>
+<div class="arithmatex">\[
+\frac{1}{R_{\text{eq}}} = \frac{1}{R_1} + \frac{1}{R_2} + \dots + \frac{1}{R_n} = \sum_{k=1}^n \frac{1}{R_k}
+\]</div>
+<p>Graph-theoretically: multiple edges between the same node pair can be merged.</p>
+<hr/>
+<h2 id="4-nested-and-complex-structures">4. Nested and Complex Structures</h2>
+<p>Real-world networks include nested series-parallel combinations and bridge circuits (e.g., Wheatstone bridge) that cannot be reduced by series-parallel rules alone.</p>
+<p>Such networks may require:</p>
+<ul>
+<li><strong>Recursive decomposition</strong>.</li>
+<li><strong>Cycle detection</strong> for recognizing parallel structures.</li>
+<li><strong>Graph contraction</strong> to reduce substructures iteratively.</li>
+</ul>
+<hr/>
+<h2 id="5-algorithmic-strategy">5. Algorithmic Strategy</h2>
 <ol>
-<li><strong>Repeated Full-Graph Scans</strong> </li>
-<li>Both series and parallel detection scan the entire graph each iteration.</li>
-<li>
-<p>Reducing this by maintaining dynamic candidate lists (e.g., queue of degree-2 nodes or hash buckets of parallel candidates) can lower per-iteration cost to near-constant time.</p>
-</li>
-<li>
-<p><strong>Edge‐Grouping for Parallel Reduction</strong> </p>
-</li>
-<li>Sorting or hashing edges by endpoint pair each time is expensive.</li>
-<li>
-<p>A multi-map or adjacency‐list extension tracking parallel edges as they form would avoid rebuilding groups.</p>
-</li>
-<li>
-<p><strong>Graph Mutation Overhead</strong> </p>
-</li>
-<li>Removing and adding nodes/edges in dynamic data structures can incur pointer or array‐shifting costs.</li>
-<li>
-<p>Using specialized union‐find or link‐cut trees may accelerate series/parallel merges.</p>
-</li>
-<li>
-<p><strong>Worst‐Case Nested Reductions</strong> </p>
-</li>
-<li>Deeply nested series-parallel combinations may trigger many small reductions.</li>
-<li>Caching subgraph reduction results (memoization) could prevent redundant work on isomorphic substructures.</li>
+<li><strong>Parse</strong> input circuit into a graph: edge list or adjacency list with weights.</li>
+<li><strong>Identify</strong> reducible patterns:</li>
+<li>Degree-2 chains (series)</li>
+<li>Multiple edges or cycles (parallel)</li>
+<li><strong>Apply</strong> simplification rules recursively or iteratively.</li>
+<li><strong>Repeat</strong> until the graph reduces to a single edge representing <span class="arithmatex">\(R_{\text{eq}}\)</span>.</li>
 </ol>
 <hr/>
+<h2 id="6-mathematical-tools">6. Mathematical Tools</h2>
+<ul>
+<li><strong>Graph contraction</strong>: Merges nodes and aggregates edge weights.</li>
+<li><strong>DFS/BFS</strong>: Used to identify paths, cycles, and connected components.</li>
+<li><strong>Cycle detection</strong>: Essential for detecting non-trivial parallel paths.</li>
+</ul>
+<hr/>
+<h2 id="7-special-cases">7. Special Cases</h2>
+<h3 id="single-resistor">Single Resistor</h3>
+<p>Trivial case:</p>
+<div class="arithmatex">\[
+R_{\text{eq}} = R
+\]</div>
+<h3 id="empty-graph">Empty Graph</h3>
+<p>No connection implies:</p>
+<div class="arithmatex">\[
+R_{\text{eq}} = \infty
+\]</div>
+<h3 id="disconnected-graph">Disconnected Graph</h3>
+<p>If nodes are isolated, the resistance is undefined or infinite.</p>
+<hr/>
+<h2 id="8-theoretical-limitations">8. Theoretical Limitations</h2>
+<p>Series-parallel reduction fails for <strong>non-planar graphs</strong> or those with <strong>non-reducible cycles</strong>, requiring:</p>
+<ul>
+<li><strong>Kirchhoff's laws</strong> or</li>
+<li><strong>Laplacian matrix</strong> and linear algebraic methods (e.g., solving using node-voltage method).</li>
+</ul>
+<hr/>
+<h2 id="plots">Plots</h2>
+<h3 id="simple-series-circuit">Simple Series Circuit</h3>
+<p><img alt="alt text" src="../image.png"/></p>
+<h3 id="simple-parallel-circuit">Simple Parallel Circuit</h3>
+<p><img alt="alt text" src="../image-1.png"/></p>
+<h3 id="nested-series-parallel-circuit">Nested Series-Parallel Circuit</h3>
+<p><img alt="alt text" src="../image-2.png"/></p>
+<h3 id="complex-network-eg-wheatstone-bridge">Complex Network (e.g., Wheatstone Bridge)</h3>
+<p><img alt="alt text" src="../image-3.png"/></p>
+<hr/>
+<h1 id="colab">Colab</h1>
+<p><a href="https://colab.research.google.com/drive/1UutbWrSg6P2xB9VMp_JO6K1IljovDN2J#scrollTo=gVN37zBlC4BT">Colab</a></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
