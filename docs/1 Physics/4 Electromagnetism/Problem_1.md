@@ -92,13 +92,12 @@ provides insights into charged particle dynamics under controlled experimental o
   - Linear acceleration for uniform $\vec{E}$
   - Direction depends on the sign of $q$
 
-- **Magnetic Field $\vec{B}$**:  
-  Influences **trajectory curvature**, not speed:
-  $$
-  \vec{F}_B = q\vec{v} \times \vec{B}, \quad r = \frac{mv_\perp}{qB}, \quad \omega_c = \frac{qB}{m} 
-  $$
-  - Stronger $B$ $\Rightarrow$ tighter curvature
+- **Magnetic Field** $\vec{B}$:  
+  Influences **trajectory curvature**, not speed:  
+  $\vec{F}_B = q\vec{v} \times \vec{B}$, $r = \frac{mv_\perp}{qB}$, $\omega_c = \frac{qB}{m}$  
+  - Stronger $B$ $\Rightarrow$ tighter curvature  
   - Direction follows right-hand rule (positive $q$)
+
 
 ### Initial Particle Velocity $\vec{v}$
 
