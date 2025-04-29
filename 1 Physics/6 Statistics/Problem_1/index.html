@@ -172,6 +172,107 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
+<h1 id="central-limit-theorem-simulation-theoretical-foundations">Central Limit Theorem Simulation – Theoretical Foundations</h1>
+<h2 id="introduction">Introduction</h2>
+<p>The <strong>Central Limit Theorem (CLT)</strong> is a cornerstone of probability theory and statistics. It establishes that, regardless of the population distribution's shape, the distribution of the sample mean approximates a normal distribution as the sample size increases, provided that certain conditions are met.</p>
+<h2 id="central-limit-theorem-formal-statement">Central Limit Theorem – Formal Statement</h2>
+<p>Let <span class="arithmatex">\(X_1, X_2, \dots, X_n\)</span> be a sequence of independent and identically distributed (i.i.d.) random variables with finite mean <span class="arithmatex">\(\mu\)</span> and finite variance <span class="arithmatex">\(\sigma^2\)</span>. The sample mean <span class="arithmatex">\(\bar{X}_n\)</span> is given by:</p>
+<div class="arithmatex">\[
+\bar{X}_n = \frac{1}{n} \sum_{i=1}^{n} X_i
+\]</div>
+<p>Then, as <span class="arithmatex">\(n \to \infty\)</span>, the standardized version of <span class="arithmatex">\(\bar{X}_n\)</span> converges in distribution to a standard normal variable <span class="arithmatex">\(Z\)</span>:</p>
+<div class="arithmatex">\[
+Z = \frac{\bar{X}_n - \mu}{\sigma / \sqrt{n}} \xrightarrow{d} \mathcal{N}(0, 1)
+\]</div>
+<p>This convergence allows practitioners to approximate probabilities concerning the sample mean using the standard normal distribution.</p>
+<h2 id="conditions-for-the-clt">Conditions for the CLT</h2>
+<p>The convergence described by the CLT holds under the following assumptions:</p>
+<ul>
+<li>The samples must be independent.</li>
+<li>Each sample must be drawn from the same distribution (i.i.d.).</li>
+<li>The population distribution must have a finite variance <span class="arithmatex">\(\sigma^2 &lt; \infty\)</span>.</li>
+</ul>
+<h2 id="implications-and-applications">Implications and Applications</h2>
+<p>The CLT has wide-ranging implications in both theoretical and applied statistics:</p>
+<ul>
+<li><strong>Estimation</strong>: Enables construction of confidence intervals for population means.</li>
+<li><strong>Hypothesis Testing</strong>: Justifies the use of z-tests and t-tests under large sample sizes.</li>
+<li><strong>Quality Control</strong>: Supports assumptions in control charts where process means are monitored.</li>
+<li><strong>Financial Modeling</strong>: Underpins stochastic models that assume normality for asset returns over time.</li>
+</ul>
+<h2 id="role-of-sample-size-and-population-shape">Role of Sample Size and Population Shape</h2>
+<p>As the sample size <span class="arithmatex">\(n\)</span> increases:</p>
+<ul>
+<li>The <strong>distribution of sample means</strong> becomes increasingly symmetric and bell-shaped.</li>
+<li>The <strong>standard error</strong> of the sample mean <span class="arithmatex">\(\sigma / \sqrt{n}\)</span> decreases, leading to more concentrated distributions.</li>
+<li>Even for skewed or discrete distributions, the sampling distribution of the mean tends toward normality.</li>
+</ul>
+<p>Importantly, the rate of convergence to normality is faster when:</p>
+<ul>
+<li>The original population is already symmetric (e.g., uniform).</li>
+<li>The sample size is larger (commonly, <span class="arithmatex">\(n \geq 30\)</span> is sufficient).</li>
+</ul>
+<h2 id="population-variance-and-spread-of-sampling-distribution">Population Variance and Spread of Sampling Distribution</h2>
+<p>The <strong>spread</strong> of the sampling distribution of the mean is determined by the <strong>population standard deviation <span class="arithmatex">\(\sigma\)</span></strong> and the <strong>sample size <span class="arithmatex">\(n\)</span></strong>:</p>
+<div class="arithmatex">\[
+\text{Standard Error} = \frac{\sigma}{\sqrt{n}}
+\]</div>
+<p>Thus, greater population variability requires larger sample sizes to achieve the same level of precision in the sample mean.</p>
+<h2 id="simulation-rationale">Simulation Rationale</h2>
+<p>Through simulation, we empirically verify:</p>
+<ul>
+<li>How distributions of sample means converge to normality.</li>
+<li>The influence of sample size and population type (Uniform, Exponential, Binomial).</li>
+<li>How increasing sample size reduces sampling variability.</li>
+</ul>
+<p>These empirical findings provide tangible support for the theoretical guarantees of the CLT.</p>
+<h2 id="code-and-plots">Code and Plots</h2>
+<h2 id="central-limit-theorem-sampling-distributions-of-the-mean">Central Limit Theorem: Sampling Distributions of the Mean</h2>
+<p><img alt="alt text" src="../image.png"/></p>
+<pre><code class="language-python"># CLT Simulation in Colab
+
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Set plot style
+sns.set(style="whitegrid")
+np.random.seed(42)
+
+# Parameters
+distributions = {
+    'Uniform': lambda size: np.random.uniform(0, 1, size),
+    'Exponential': lambda size: np.random.exponential(scale=1.0, size=size),
+    'Binomial': lambda size: np.random.binomial(n=10, p=0.5, size=size),
+}
+sample_sizes = [5, 10, 30, 50]
+num_samples = 1000  # Number of times to sample to form sampling distribution
+
+# Plotting
+fig, axes = plt.subplots(
+    len(distributions), len(sample_sizes), 
+    figsize=(20, 12), 
+    constrained_layout=True
+)
+
+for i, (dist_name, dist_func) in enumerate(distributions.items()):
+    for j, n in enumerate(sample_sizes):
+        sample_means = [
+            np.mean(dist_func(n)) for _ in range(num_samples)
+        ]
+
+        ax = axes[i, j]
+        sns.histplot(sample_means, kde=True, stat="density", bins=30, ax=ax, color='skyblue')
+        ax.set_title(f'{dist_name} Distribution\nSample Size = {n}', fontsize=12)
+        ax.set_xlabel('Sample Mean')
+        ax.set_ylabel('Density')
+
+plt.suptitle("Central Limit Theorem: Sampling Distributions of the Mean", fontsize=16)
+plt.show()
+</code></pre>
+<hr/>
+<h1 id="colab">Colab</h1>
+<p><a href="https://colab.research.google.com/drive/1Pl3rwMcWLpNtIH0ayPh-nkp3iLcZFDb4">Colab</a></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
