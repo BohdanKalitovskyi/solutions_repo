@@ -656,6 +656,87 @@ from IPython.display import HTML
 HTML(ani.to_jshtml())
 ```
 
+## 3d animation
+
+![alt text](optimized_3d_wave.gif)
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation, PillowWriter
+from mpl_toolkits.mplot3d import Axes3D
+from google.colab import files
+from IPython.display import HTML
+
+# Parameters
+amplitude = 1.5
+wavelength = 2.0
+frequency = 1.0
+k = 2 * np.pi / wavelength
+omega = 2 * np.pi * frequency
+initial_phase = 0.0
+
+# Grid
+x = np.linspace(-10, 10, 150)
+y = np.linspace(-10, 10, 150)
+X, Y = np.meshgrid(x, y)
+
+# Sources
+source_x1, source_y1 = -3.0, 0.0
+source_x2, source_y2 = 3.0, 0.0
+
+# Displacement functions
+def single_wave_displacement(X, Y, source_x, source_y, t):
+    r = np.sqrt((X - source_x)**2 + (Y - source_y)**2)
+    return amplitude * np.cos(k * r - omega * t + initial_phase)
+
+def total_displacement(X, Y, t):
+    h1 = single_wave_displacement(X, Y, source_x1, source_y1, t)
+    h2 = single_wave_displacement(X, Y, source_x2, source_y2, t)
+    return h1 + h2
+
+# Create 3D plot
+fig = plt.figure(figsize=(10, 8))
+ax = fig.add_subplot(111, projection='3d')
+
+# Initial surface
+Z = total_displacement(X, Y, 0.0)
+surf = ax.plot_surface(X, Y, Z, cmap='coolwarm', edgecolor='none')
+
+# Axes settings
+ax.set_zlim(-3, 3)
+ax.set_title("Optimized 3D Wave Interference")
+ax.set_xlabel("x")
+ax.set_ylabel("y")
+ax.set_zlabel("Displacement")
+ax.view_init(elev=30, azim=45)
+
+# Animation update function
+def update(frame):
+    ax.clear()
+    t = frame / 15.0
+    Z = total_displacement(X, Y, t)
+    surf = ax.plot_surface(X, Y, Z, cmap='coolwarm', edgecolor='none')
+    ax.set_zlim(-3, 3)
+    ax.set_title("Optimized 3D Wave Interference")
+    ax.set_xlabel("x")
+    ax.set_ylabel("y")
+    ax.set_zlabel("Displacement")
+    ax.view_init(elev=30, azim=45)
+    return [surf]
+
+# Animation
+ani = FuncAnimation(fig, update, frames=80, interval=50, blit=False)
+
+# Save as GIF
+ani.save('optimized_3d_wave.gif', writer=PillowWriter(fps=20))
+files.download('optimized_3d_wave.gif')
+
+# Show animation in Colab
+HTML(ani.to_jshtml())
+
+
+```
 # Colab
 
 [Colab](https://colab.research.google.com/drive/1TO2sfmIH_UcxeeS4zTR5PBCTCUUdVMKc#scrollTo=0AE2MW7QpQH0)
