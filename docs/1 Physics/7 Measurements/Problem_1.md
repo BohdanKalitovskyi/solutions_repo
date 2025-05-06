@@ -1,3 +1,5 @@
+# Problem 1
+
 # Measuring Earth's Gravitational Acceleration with a Pendulum
 
 ## Motivation
