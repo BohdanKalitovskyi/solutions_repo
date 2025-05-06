@@ -1,125 +1,169 @@
-# Problem 1
+# Measuring Earth's Gravitational Acceleration with a Pendulum
 
-# Theoretical Background
+## Motivation
 
-## Simple Pendulum Motion
-
-A simple pendulum consists of a point mass suspended from a fixed point by a string of negligible mass and inextensible length. When displaced and released, it oscillates under the influence of gravity.
-
-The motion is approximately simple harmonic if the angular displacement is small (typically less than 15°), ensuring the approximation:
-
-$$
-\sin(\theta) \approx \theta \quad \text{(in radians)}
-$$
-
-This leads to the equation of motion:
-
-$$
-\frac{d^2\theta}{dt^2} + \frac{g}{L}\theta = 0
-$$
-
-where:
-- $g$ is the acceleration due to gravity,
-- $L$ is the length of the pendulum,
-- $\theta$ is the angular displacement.
-
-The solution is harmonic with period:
-
-$$
-T = 2\pi \sqrt{\frac{L}{g}}
-$$
-
-Solving for $g$ gives:
-
-$$
-g = \frac{4\pi^2 L}{T^2}
-$$
-
-## Measurement and Uncertainty
-
-### Length Measurement
-
-Let:
-- $L$ be the measured length,
-- $\Delta L$ be the uncertainty in length, estimated as half the resolution of the measuring tool.
-
-If the resolution is $r$:
-
-$$
-\Delta L = \frac{r}{2}
-$$
-
-### Time Measurement
-
-For accurate determination of the period, we measure the time $t_{10}$ for 10 complete oscillations, then calculate the mean time $\bar{t}_{10}$ and standard deviation $\sigma_{10}$ over $n = 10$ trials.
-
-Period:
-
-$$
-T = \frac{\bar{t}_{10}}{10}
-$$
-
-Uncertainty in mean time:
-
-$$
-\Delta \bar{t}_{10} = \frac{\sigma_{10}}{\sqrt{n}}
-$$
-
-Thus, uncertainty in period:
-
-$$
-\Delta T = \frac{\Delta \bar{t}_{10}}{10}
-$$
-
-### Propagation of Uncertainty
-
-Using the formula for $g$:
-
-$$
-g = \frac{4\pi^2 L}{T^2}
-$$
-
-Uncertainty is propagated using:
-
-$$
-\frac{\Delta g}{g} = \sqrt{\left(\frac{\Delta L}{L}\right)^2 + \left(2 \cdot \frac{\Delta T}{T}\right)^2}
-$$
-
-Therefore:
-
-$$
-\Delta g = g \cdot \sqrt{\left(\frac{\Delta L}{L}\right)^2 + \left(2 \cdot \frac{\Delta T}{T}\right)^2}
-$$
-
-## Assumptions and Limitations
-
-- Air resistance and friction at the pivot are negligible.
-- String is massless and inextensible.
-- Oscillations are within the small angle approximation.
-- Timing resolution and human reaction time introduce error.
-- Measuring tool resolution affects $\Delta L$ directly.
+The acceleration due to gravity, denoted as $g$, is a fundamental physical constant. One classical method to estimate $g$ is by analyzing the period of a simple pendulum. This experiment emphasizes proper measurement and uncertainty analysis.
 
 ---
 
-# Plots
+## Materials
 
-![alt text](image.png)
----
-![alt text](image-1.png)
-#### This histogram displays the spread and central tendency of your 10 measurements for 10 oscillations. A tight distribution suggests high precision. Anomalies or outliers become visually obvious.
----
-![alt text](image-2.png)
-#### This plot illustrates the individual period measurements with their uncertainty. It helps assess consistency and shows whether any trial deviates significantly from the mean.
----
-![alt text](image-3.png)
-#### This visualization compares your experimentally derived $g$ value to the accepted value of 9.81 m/s². The error bar reflects your propagated uncertainty and shows how accurate and precise your measurement is.
----
-![alt text](image-4.png)
-#### This pie chart quantifies how much each source of error (length vs. period) contributes to the overall uncertainty in gravitational acceleration $g$. It helps prioritize which measurement needs higher precision for better results.
+- String length: approx. 1–1.5 m
+- Small weight (e.g., phone charger block)
+- Stopwatch or smartphone timer
+- Ruler or tape measure (resolution: **1 cm**)
 
 ---
+
+## Setup
+
+- Measured pendulum length:  
+  $$ L = 1.53 \, \text{m} \quad \pm \quad \Delta L = 0.005 \, \text{m} $$  
+  (Uncertainty: half the smallest unit of your ruler)
+
+---
+
+## Data Collection
+
+| Trial | Time for 10 Oscillations $t_{10}$ (s) |
+|-------|----------------------------------------|
+| 1     | 23.90                                  |
+| 2     | 23.80                                  |
+| 3     | 23.70                                  |
+| 4     | 23.77                                  |
+| 5     | 24.01                                  |
+| 6     | 24.04                                  |
+| 7     | 23.70                                  |
+| 8     | 24.07                                  |
+| 9     | 24.09                                  |
+| 10    | 23.83                                  |
+
+- Mean time:  
+  $$ \overline{t_{10}} = 23.891 \, \text{s} $$
+
+- Standard deviation:  
+  $$ s = 0.157 \, \text{s} $$
+
+- Uncertainty in mean time:  
+  $$ \Delta \overline{t_{10}} = \frac{0.157}{\sqrt{10}} = 0.050 \, \text{s} $$
+
+---
+
+## Calculations
+
+- Period of pendulum:  
+  $$ T = \frac{\overline{t_{10}}}{10} = \frac{23.891}{10} = 2.389 \, \text{s} $$
+
+- Gravitational acceleration:  
+  $$ g = \frac{4\pi^2 \cdot 1.53}{(2.389)^2} = 10.60 \, \text{m/s}^2 $$
+
+---
+
+## Uncertainty Propagation
+
+- Uncertainty in $T$:  
+  $$ \Delta T = \frac{\Delta \overline{t_{10}}}{10} = \frac{0.050}{10} = 0.005 \, \text{s} $$
+
+- Relative uncertainty:  
+  $$
+  \frac{\Delta g}{g} = \sqrt{ \left( \frac{0.005}{1.53} \right)^2 + \left( 2 \cdot \frac{0.005}{2.389} \right)^2 } = 0.00428
+  $$
+
+- Then:  
+  $$ \Delta g = 10.60 \cdot 0.00428 = 0.045 \, \text{m/s}^2 $$
+
+- Final result:  
+  $$ g = 10.60 \pm 0.05 \, \text{m/s}^2 $$
+
+---
+
+## Code and Plot
+
+![alt text](image-5.png)
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# --- Data ---
+t10_values = np.array([23.90, 23.80, 23.70, 23.77, 24.01, 24.04, 23.70, 24.07, 24.09, 23.83])
+L = 1.53  # Length of the pendulum in meters
+delta_L = 0.005  # Uncertainty in length (assumed to be 0.5 cm)
+n = len(t10_values)  # Number of trials
+
+# --- Calculations ---
+# Mean time for 10 oscillations
+mean_t10 = np.mean(t10_values)
+
+# Standard deviation and uncertainty in mean time
+std_t10 = np.std(t10_values, ddof=1)
+uncertainty_t10 = std_t10 / np.sqrt(n)
+
+# Period and its uncertainty
+T = mean_t10 / 10
+delta_T = uncertainty_t10 / 10
+
+# Gravitational acceleration
+g = (4 * np.pi**2 * L) / T**2
+
+# Uncertainty in g using propagation of errors
+relative_uncertainty_g = np.sqrt((delta_L / L)**2 + (2 * delta_T / T)**2)
+delta_g = g * relative_uncertainty_g
+
+# Standard gravitational acceleration value
+g_standard = 9.80665
+
+# --- Print results ---
+print(f"Measured g = {g:.2f} ± {delta_g:.2f} m/s²")
+
+# --- Plot: Measured g vs Standard g ---
+plt.figure(figsize=(6, 5))
+
+# Dynamic y-limits for clarity
+y_min = min(g - delta_g, g_standard) - 0.2
+y_max = max(g + delta_g, g_standard) + 0.2
+
+# Plot measured g with error bars
+plt.errorbar(1, g, yerr=delta_g, fmt='o', capsize=10, color='crimson',
+             label=f'Measured g = {g:.2f} ± {delta_g:.2f} m/s²')
+
+# Plot standard g
+plt.hlines(g_standard, 0.5, 1.5, colors='green', linestyles='--',
+           label=f'Standard g = {g_standard:.2f} m/s²')
+
+# Annotate points
+plt.text(1.05, g + delta_g + 0.05, "Measured", color='crimson')
+plt.text(1.05, g_standard + 0.05, "Standard", color='green')
+
+# Format axes
+plt.xticks([])
+plt.xlim(0.5, 1.5)
+plt.ylim(y_min, y_max)
+plt.ylabel('g (m/s²)')
+plt.title('Measured vs Standard Gravitational Acceleration')
+plt.grid(True, linestyle=':', alpha=0.7)
+plt.legend()
+plt.tight_layout()
+
+# Show the plot
+plt.show()
+
+```
+---
+
+## Analysis
+
+1. **Comparison with standard value**:  
+   - Standard $g = 9.80665 \, \text{m/s}^2$  
+   - Difference: $ \Delta = 10.60 - 9.81 = 0.79 \, \text{m/s}^2 $
+
+2. **Discussion**:
+   - Measurement resolution introduces small uncertainty, but most error likely from timing reaction.
+   - Repeated measurements reduced random error.
+   - Assumes small-angle approximation and ideal point mass, which may not fully apply.
+
 
 # Colab
 
-[Colab](https://colab.research.google.com/drive/1DbQq2enmSWr-EJ-sfECsZJF_DLwxeM51#scrollTo=l9IvRFJI_BHY)
+[Colab](https://colab.research.google.com/drive/1DbQq2enmSWr-EJ-sfECsZJF_DLwxeM51#scrollTo=3yaOyweqSoFX)
 
