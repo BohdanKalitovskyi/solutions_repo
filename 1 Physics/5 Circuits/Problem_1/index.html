@@ -254,6 +254,29 @@ R_{\text{eq}} = \infty
 <h2 id="plots">Plots</h2>
 <h3 id="circuit-simplification-case-1">Circuit simplification. Case 1</h3>
 <p><img alt="alt text" src="../circuit_simplification_case1%20%281%29.gif"/></p>
+<h2 id="initial-vs-simplified-resistance">Initial vs Simplified Resistance</h2>
+<p>We analyze the resistor network with all resistors having a value of $ 1\,\Omega $.</p>
+<h3 id="initial-resistance-before-simplification">Initial Resistance (Before Simplification)</h3>
+<p>Even before any reduction, the total resistance between $ B+ $ and $ B- $ is calculated as:</p>
+<div class="arithmatex">\[
+R_{\text{initial}} = \frac{8}{3}\,\Omega \quad \text{or approximately } 2.67\,\Omega
+\]</div>
+<p>This comes from:
+- $ R_{23} = R_2 + R_3 = 1 + 1 = 2\,\Omega $
+- $ R_{45} = R_4 + R_5 = 1 + 1 = 2\,\Omega $
+- $ R_{123} = R_1 \parallel R_{23} = \frac{1 \cdot 2}{1 + 2} = \frac{2}{3}\,\Omega $
+- $ R_{\text{total}} = R_{123} + R_{45} = \frac{2}{3} + 2 = \frac{8}{3}\,\Omega $</p>
+<h3 id="after-step-by-step-simplification">After Step-by-step Simplification</h3>
+<p>Each step maintains the same total resistance:
+- Combine $ R2 $ &amp; $ R3 $ → $ 2\,\Omega $
+- Combine $ R4 $ &amp; $ R5 $ → $ 2\,\Omega $
+- Combine $ R1 $ &amp; $ R23 $ in parallel → $ \frac{2}{3}\,\Omega $
+- Final series combination → $ \frac{8}{3}\,\Omega $</p>
+<h3 id="final-result-matches-initial-value">Final Result Matches Initial Value</h3>
+<div class="arithmatex">\[
+R_{\text{initial}} = R_{\text{simplified}} = \frac{8}{3}\,\Omega
+\]</div>
+<hr/>
 <pre><code class="language-python">import networkx as nx
 import matplotlib.pyplot as plt
 from PIL import Image
