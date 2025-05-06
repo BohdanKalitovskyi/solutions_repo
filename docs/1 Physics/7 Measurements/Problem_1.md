@@ -157,7 +157,7 @@ plt.show()
 
 1. **Comparison with standard value**:  
    - Standard $g = 9.80665 \, \text{m/s}^2$  
-   - Difference: $ \Delta = 10.60 - 9.81 = 0.79 \, \text{m/s}^2 $
+   - Difference: $\Delta = 10.60 - 9.81 = 0.79 \, \text{m/s}^2$
 
 2. **Discussion**:
    - Measurement resolution introduces small uncertainty, but most error likely from timing reaction.
