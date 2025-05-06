@@ -132,18 +132,18 @@ R_{\text{initial}} = \frac{8}{3}\,\Omega \quad \text{or approximately } 2.67\,\O
 $$
 
 This comes from:
-- $ R_{23} = R_2 + R_3 = 1 + 1 = 2\,\Omega $
-- $ R_{45} = R_4 + R_5 = 1 + 1 = 2\,\Omega $
-- $ R_{123} = R_1 \parallel R_{23} = \frac{1 \cdot 2}{1 + 2} = \frac{2}{3}\,\Omega $
-- $ R_{\text{total}} = R_{123} + R_{45} = \frac{2}{3} + 2 = \frac{8}{3}\,\Omega $
+- $R_{23} = R_2 + R_3 = 1 + 1 = 2\,\Omega$
+- $R_{45} = R_4 + R_5 = 1 + 1 = 2\,\Omega$
+- $R_{123} = R_1 \parallel R_{23} = \frac{1 \cdot 2}{1 + 2} = \frac{2}{3}\,\Omega$
+- $R_{\text{total}} = R_{123} + R_{45} = \frac{2}{3} + 2 = \frac{8}{3}\,\Omega$
 
 ### After Step-by-step Simplification
 
 Each step maintains the same total resistance:
-- Combine $ R2 $ & $ R3 $ → $ 2\,\Omega $
-- Combine $ R4 $ & $ R5 $ → $ 2\,\Omega $
-- Combine $ R1 $ & $ R23 $ in parallel → $ \frac{2}{3}\,\Omega $
-- Final series combination → $ \frac{8}{3}\,\Omega $
+- Combine $R2$ & $R3$ → $2\,\Omega$
+- Combine $R4$ & $R5$ → $2\,\Omega$
+- Combine $R1$ & $R23$ in parallel → $\frac{2}{3}\,\Omega$
+- Final series combination → $\frac{8}{3}\,\Omega$
 
 ### Final Result Matches Initial Value
 
